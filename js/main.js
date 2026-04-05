@@ -28,6 +28,7 @@ const translations = {
     nav: {
       about: 'Sobre mí',
       projects: 'Proyectos',
+      gallery: 'Galería',
       contact: 'Contacto',
     },
     hero: {
@@ -48,6 +49,10 @@ const translations = {
       label: '02 — PROYECTOS',
       title: 'Investigación<br><em>&amp; Producción</em>',
       viewGallery: 'Ver galería',
+    },
+    gallery: {
+      label: '03 — GALERÍA',
+      title: 'Archivo visual<br><em>de procesos</em>',
     },
     project: {
       celulosa: {
@@ -79,7 +84,7 @@ const translations = {
       },
     },
     contact: {
-      label: '03 — CONTACTO',
+      label: '04 — CONTACTO',
       heading: 'Conversemos.',
       intro: 'Si querés escribir por una pieza, una investigación, una producción o una colaboración, este es el mejor lugar para empezar.',
       emailLabel: 'Email',
@@ -99,6 +104,7 @@ const translations = {
     nav: {
       about: 'About',
       projects: 'Projects',
+      gallery: 'Gallery',
       contact: 'Contact',
     },
     hero: {
@@ -119,6 +125,10 @@ const translations = {
       label: '02 — PROJECTS',
       title: 'Research<br><em>&amp; Production</em>',
       viewGallery: 'View gallery',
+    },
+    gallery: {
+      label: '03 — GALLERY',
+      title: 'Visual archive<br><em>of processes</em>',
     },
     project: {
       celulosa: {
@@ -150,7 +160,7 @@ const translations = {
       },
     },
     contact: {
-      label: '03 — CONTACT',
+      label: '04 — CONTACT',
       heading: 'Let’s talk.',
       intro: 'If you want to get in touch about a piece, research, production, or a collaboration, this is the best place to start.',
       emailLabel: 'Email',

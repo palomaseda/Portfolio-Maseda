@@ -49,15 +49,18 @@
       <div class="nav-links">
         <a href="#sobre-mi"  class="nav-link" data-i18n="nav.about">Sobre mí</a>
         <a href="#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
+        <a href="#galeria" class="nav-link" data-i18n="nav.gallery">Galería</a>
         <a href="#contacto"  class="nav-link" data-i18n="nav.contact">Contacto</a>
       </div>
 
-      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
 
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-      </button>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -68,6 +71,7 @@
     <nav class="menu-overlay-links">
       <a href="#sobre-mi"  class="overlay-link" data-i18n="nav.about">Sobre mí</a>
       <a href="#proyectos" class="overlay-link" data-i18n="nav.projects">Proyectos</a>
+      <a href="#galeria" class="overlay-link" data-i18n="nav.gallery">Galería</a>
       <a href="#contacto"  class="overlay-link" data-i18n="nav.contact">Contacto</a>
     </nav>
     <button class="lang-toggle lang-toggle--overlay" id="langToggleOverlay" type="button" aria-label="Switch language">EN</button>
@@ -379,12 +383,67 @@
   </section>
 
   <!-- ============================================================
+       GALERÍA
+  ============================================================ -->
+  <section id="galeria" class="gallery-section">
+    <div class="container">
+      <div class="gallery-header">
+        <div class="section-label" data-i18n="gallery.label">03 — GALERÍA</div>
+        <h2 class="section-title gallery-title" data-i18n-html="gallery.title">Archivo visual<br><em>de procesos</em></h2>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-item"><img src="img/proyectos/celulosa/cover.jpg" alt="Celulosa bacteriana"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/cover.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/cover.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/segunda-piel/cover.jpg" alt="Segunda piel"></figure>
+
+        <figure class="gallery-item"><img src="img/proyectos/celulosa/01.jpg" alt="Celulosa bacteriana"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/celulosa/02.jpg" alt="Celulosa bacteriana"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/celulosa/03.jpg" alt="Celulosa bacteriana"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/celulosa/04.jpg" alt="Celulosa bacteriana"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/celulosa/05.jpg" alt="Celulosa bacteriana"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/celulosa/06.jpg" alt="Celulosa bacteriana"></figure>
+
+        <figure class="gallery-item"><img src="img/proyectos/cafe/01.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/02.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/03.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/04.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/05.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/06.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/07.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/08.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/09.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/10.jpg" alt="Biocuero de café"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/cafe/11.jpg" alt="Biocuero de café"></figure>
+
+        <figure class="gallery-item"><img src="img/proyectos/tintes/01.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/02.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/03.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/04.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/05.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/06.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/07.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/08.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/09.jpg" alt="Tintes naturales"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/tintes/10.jpg" alt="Tintes naturales"></figure>
+
+        <figure class="gallery-item"><img src="img/proyectos/segunda-piel/01.jpg" alt="Segunda piel"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/segunda-piel/02.jpg" alt="Segunda piel"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/segunda-piel/03.jpg" alt="Segunda piel"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/segunda-piel/04.jpg" alt="Segunda piel"></figure>
+        <figure class="gallery-item"><img src="img/proyectos/segunda-piel/05.jpg" alt="Segunda piel"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        CONTACTO
   ============================================================ -->
   <section id="contacto" class="contact">
     <div class="contact-inner">
       <div class="contact-copy">
-        <div class="section-label" data-i18n="contact.label">03 — CONTACTO</div>
+        <div class="section-label" data-i18n="contact.label">04 — CONTACTO</div>
         <h2 class="contact-heading" data-i18n="contact.heading">
           Conversemos.
         </h2>
