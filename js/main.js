@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initMobileMenu();
   initHero();
+  initGallery();
   initScrollReveals();
   initParallax();
   initLightbox();
@@ -331,7 +332,6 @@ function initHero() {
   const titleEl       = document.querySelector('.hero-title');
   const eyebrow       = document.querySelector('.hero-eyebrow');
   const subtitle      = document.querySelector('.hero-subtitle');
-  const scrollIndic   = document.querySelector('.hero-scroll');
 
   if (!titleEl) return;
 
@@ -371,13 +371,45 @@ function initHero() {
       opacity: 1,
       duration: 0.9,
       ease: 'power2.out',
-    }, '-=0.5')
-    /* Indicador de scroll */
-    .to(scrollIndic, {
-      opacity: 1,
-      duration: 0.7,
-      ease: 'power2.out',
     }, '-=0.5');
+}
+
+function initGallery() {
+  const grid = document.getElementById('galleryGrid');
+  if (!grid) return;
+
+  const projectCards = Array.from(document.querySelectorAll('.project-item'));
+  const projectGalleries = projectCards.map((card) => {
+    const image = card.querySelector('.project-img');
+    const title = card.querySelector('.project-title');
+    if (!image || !image.dataset.gallery) return [];
+
+    const altBase = title ? title.textContent.replace(/\s+/g, ' ').trim() : 'Proyecto';
+    return image.dataset.gallery
+      .split('|')
+      .map((src) => src.trim())
+      .filter(Boolean)
+      .map((src, index) => ({
+        src,
+        alt: `${altBase} ${index === 0 ? 'cover' : index}`,
+      }));
+  }).filter((items) => items.length);
+
+  // Mezcla por rondas para mantener variedad entre proyectos aunque cambie la cantidad de fotos.
+  const mixedGallery = [];
+  const maxLength = Math.max(...projectGalleries.map((items) => items.length), 0);
+
+  for (let i = 0; i < maxLength; i += 1) {
+    projectGalleries.forEach((items) => {
+      if (items[i]) mixedGallery.push(items[i]);
+    });
+  }
+
+  grid.innerHTML = mixedGallery.map(({ src, alt }) => `
+    <figure class="gallery-item">
+      <img src="${src}" alt="${alt}" loading="lazy" onerror="this.closest('figure')?.remove()">
+    </figure>
+  `).join('');
 }
 
 
@@ -453,7 +485,7 @@ function initScrollReveals() {
         ease: 'power4.inOut',
         scrollTrigger: {
           trigger: item,
-          start: 'top 78%',
+          start: 'top 68%',
         }
       });
     }
@@ -469,7 +501,38 @@ function initScrollReveals() {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: item,
-          start: 'top 72%',
+          start: 'top 62%',
+        }
+      });
+    }
+  });
+
+  /* ── Gallery: reveal con stagger al entrar en viewport ── */
+  gsap.utils.toArray('.gallery-item').forEach((item, index) => {
+    gsap.to(item, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.95,
+      ease: 'power3.out',
+      delay: index % 3 * 0.03,
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 88%',
+        once: true,
+      }
+    });
+
+    const image = item.querySelector('img');
+    if (image) {
+      gsap.to(image, {
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 88%',
+          once: true,
         }
       });
     }
