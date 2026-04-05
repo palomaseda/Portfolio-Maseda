@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 /* ── Iniciar todo cuando el DOM esté listo ───────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   initLanguage();
-  initCursor();
   initNavbar();
   initMobileMenu();
   initHero();
@@ -210,7 +209,10 @@ function applyLanguage(lang) {
   if (twitterDescription) twitterDescription.content = dict.meta.description;
 
   document.querySelectorAll('.lang-toggle').forEach((button) => {
-    button.textContent = lang === 'es' ? 'EN' : 'ES';
+    const nextLang = lang === 'es' ? 'en' : 'es';
+    const flag = nextLang === 'en' ? '🇺🇸' : '🇦🇷';
+    const label = nextLang.toUpperCase();
+    button.innerHTML = `<span class="lang-flag" aria-hidden="true">${flag}</span>${label}`;
   });
 }
 
@@ -232,51 +234,7 @@ function initLanguage() {
 
 
 /* ══════════════════════════════════════════════════════════════
-   1. CURSOR PERSONALIZADO
-   ──────────────────────────────────────────────────────────────
-   - .cursor-dot     → sigue al mouse instantáneamente
-   - .cursor-outline → sigue con lag suave via RAF loop
-   - Se desactiva en dispositivos touch (sin hover)
-   ══════════════════════════════════════════════════════════════ */
-function initCursor() {
-  const dot     = document.getElementById('cursorDot');
-  const outline = document.getElementById('cursorOutline');
-
-  if (!dot || !outline) return;
-  // Solo en dispositivos con mouse/puntero
-  if (window.matchMedia('(hover: none)').matches) return;
-
-  let mouseX = 0, mouseY = 0;
-  let outX   = 0, outY   = 0;
-
-  /* Actualizar posición del dot al instante */
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    dot.style.left = mouseX + 'px';
-    dot.style.top  = mouseY + 'px';
-  });
-
-  /* Anillo sigue con lerp (interpolación suave) via requestAnimationFrame */
-  (function animateOutline() {
-    outX += (mouseX - outX) * 0.11;
-    outY += (mouseY - outY) * 0.11;
-    outline.style.left = outX + 'px';
-    outline.style.top  = outY + 'px';
-    requestAnimationFrame(animateOutline);
-  })();
-
-  /* Expandir cursor al pasar sobre elementos interactivos */
-  const targets = 'a, button, .project-image-wrap, .contact-link, .nav-logo';
-  document.querySelectorAll(targets).forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-  });
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   2. NAVBAR — aparece transparente, adquiere blur al scrollear
+   1. NAVBAR — aparece transparente, adquiere blur al scrollear
    ══════════════════════════════════════════════════════════════ */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -291,7 +249,7 @@ function initNavbar() {
 
 
 /* ══════════════════════════════════════════════════════════════
-   3. MENÚ MOBILE — hamburger + overlay fullscreen
+   2. MENÚ MOBILE — hamburger + overlay fullscreen
    ══════════════════════════════════════════════════════════════ */
 function initMobileMenu() {
   const hamburger = document.getElementById('hamburger');
@@ -322,11 +280,11 @@ function initMobileMenu() {
 
 
 /* ══════════════════════════════════════════════════════════════
-   4. HERO — Animación de entrada
+   3. HERO — Animación de entrada
    ──────────────────────────────────────────────────────────────
    - El título "PALOMA MASEDA" se divide en letras individuales
    - Cada letra entra desde abajo con rotación 3D y stagger
-   - Luego aparecen subtitle y scroll indicator
+   - Luego aparece el subtítulo
    ══════════════════════════════════════════════════════════════ */
 function initHero() {
   const titleEl       = document.querySelector('.hero-title');
@@ -414,7 +372,7 @@ function initGallery() {
 
 
 /* ══════════════════════════════════════════════════════════════
-   5. SCROLL REVEALS — animaciones al entrar al viewport
+   4. SCROLL REVEALS — animaciones al entrar al viewport
    ──────────────────────────────────────────────────────────────
    Cada sección y elemento tiene su propia animación.
    Tecnología: GSAP + ScrollTrigger.
@@ -561,7 +519,7 @@ function initScrollReveals() {
 
 
 /* ══════════════════════════════════════════════════════════════
-   6. PARALLAX en imágenes de proyectos
+   5. PARALLAX en imágenes de proyectos
    ──────────────────────────────────────────────────────────────
    Las imágenes se mueven más lento que el scroll, creando
    profundidad. El wrapper tiene overflow:hidden y la imagen
@@ -608,7 +566,7 @@ function initParallax() {
 
 
 /* ══════════════════════════════════════════════════════════════
-   7. LIGHTBOX
+   6. LIGHTBOX
    ──────────────────────────────────────────────────────────────
    - Se abre al clickear .project-image-wrap o .project-btn
    - Las imágenes se leen del atributo data-gallery (separadas por "|")

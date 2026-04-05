@@ -71,7 +71,6 @@ body {
   font-weight: 300;
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none; /* Se reemplaza con el cursor custom */
 }
 
 img {
@@ -81,7 +80,7 @@ img {
 }
 
 a    { color: inherit; text-decoration: none; }
-button { background: none; border: none; cursor: none; font-family: inherit; color: inherit; }
+button { background: none; border: none; cursor: pointer; font-family: inherit; color: inherit; }
 
 /* ── Textura de ruido (overlay fijo, muy sutil) ─────────────── */
 body::after {
@@ -129,57 +128,6 @@ body::after {
   z-index: 0;
   user-select: none;
 }
-
-
-/* ════════════════════════════════════════════════════════════
-   CURSOR PERSONALIZADO
-   Dos capas: punto pequeño (sigue inmediatamente) +
-   anillo (sigue con lag via JS RAF loop).
-   En mobile/touch se oculta via CSS y body recupera cursor normal.
-   ════════════════════════════════════════════════════════════ */
-.cursor-dot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 5px;
-  height: 5px;
-  background: var(--c-text);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  will-change: left, top;
-  transition: width var(--t-fast), height var(--t-fast), background var(--t-fast);
-}
-
-.cursor-outline {
-  position: fixed;
-  top: 0; left: 0;
-  width: 36px;
-  height: 36px;
-  border: 1px solid rgba(240, 237, 232, 0.35);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  will-change: left, top;
-  transition:
-    width   0.4s var(--ease-expo),
-    height  0.4s var(--ease-expo),
-    opacity var(--t-fast),
-    border-color var(--t-fast);
-}
-
-/* Estado hover: anillo se expande */
-body.cursor-hover .cursor-outline {
-  width: 58px;
-  height: 58px;
-  border-color: rgba(240, 237, 232, 0.55);
-}
-body.cursor-hover .cursor-dot {
-  width: 3px;
-  height: 3px;
-}
-
 
 /* ════════════════════════════════════════════════════════════
    NAVBAR
@@ -259,7 +207,7 @@ body.cursor-hover .cursor-dot {
 
 .lang-toggle {
   font-size: 0.62rem;
-  font-weight: 600;
+  font-weight: 300;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--c-text);
@@ -270,6 +218,12 @@ body.cursor-hover .cursor-dot {
   align-items: center;
   padding: 0.7rem 0.95rem 0.62rem;
   transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+}
+
+.lang-flag {
+  font-size: 0.8rem;
+  line-height: 1;
+  margin-right: 0.4rem;
 }
 
 .lang-toggle:hover {
@@ -442,7 +396,7 @@ body.cursor-hover .cursor-dot {
   font-size: 0.65rem;
   letter-spacing: 0.35em;
   color: var(--c-text);
-  font-weight: 600;
+  font-weight: 300;
   text-transform: uppercase;
   margin-bottom: var(--sp-4);
   opacity: 0; /* Animado via JS */
@@ -468,7 +422,7 @@ body.cursor-hover .cursor-dot {
 .hero-subtitle {
   font-family: var(--font-body);
   font-size: clamp(0.72rem, 1.7vw, 1rem);
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.34em;
   color: var(--c-text);
   text-transform: uppercase;
@@ -662,7 +616,6 @@ body.cursor-hover .cursor-dot {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--c-surface);
-  cursor: none;
   /* Reveal via clip-path — animado por GSAP */
   clip-path: inset(100% 0 0 0);
 }
@@ -786,7 +739,6 @@ body.cursor-hover .cursor-dot {
   position: relative;
   z-index: 1;
   transition: gap var(--t-fast), border-color var(--t-fast);
-  cursor: none;
 }
 .project-btn:hover {
   gap: var(--sp-3);
@@ -1156,12 +1108,6 @@ body.cursor-hover .cursor-dot {
 
 /* ── Mobile — 768px ────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Cursor custom desactivado — touch no lo usa */
-  body         { cursor: auto; }
-  button       { cursor: pointer; }
-  .cursor-dot,
-  .cursor-outline { display: none; }
-
   /* Nav: mostrar hamburger, ocultar links */
   .nav-links  { display: none; }
   .hamburger  { display: flex; }
@@ -1274,7 +1220,11 @@ body.cursor-hover .cursor-dot {
   .about-image-wrap { aspect-ratio: 1 / 1; }
   .project-image-wrap { aspect-ratio: 1 / 1; }
   .gallery-grid {
-    column-count: 1;
+    column-count: 2;
+    column-gap: 0.75rem;
+  }
+  .gallery-item {
+    margin-bottom: 0.75rem;
   }
   .contact-heading { font-size: clamp(2.8rem, 14vw, 4rem); }
   .contact-intro {
