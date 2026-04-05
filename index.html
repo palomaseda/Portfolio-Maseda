@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paloma Maseda — Diseñadora Textil especializada en Biomateriales. Buenos Aires.">
+  <meta property="og:title" content="Paloma Maseda — Diseño Textil">
+  <meta property="og:description" content="Diseñadora textil especializada en biomateriales. Investigación y producción independiente.">
+  <title>Paloma Maseda — Diseño Textil</title>
+
+  <!-- Google Fonts: Cormorant Garamond (títulos) + Inter (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       CURSOR PERSONALIZADO
+  ============================================================ -->
+  <div class="cursor-dot"     id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
+
+  <!-- ============================================================
+       NAVBAR FIJA
+  ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">PM</a>
+
+      <div class="nav-links">
+        <a href="#sobre-mi"  class="nav-link">Sobre mí</a>
+        <a href="#proyectos" class="nav-link">Proyectos</a>
+        <a href="#contacto"  class="nav-link">Contacto</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MENÚ MOBILE — OVERLAY FULLSCREEN
+  ============================================================ -->
+  <div class="menu-overlay" id="menuOverlay" role="dialog" aria-label="Menú de navegación">
+    <nav class="menu-overlay-links">
+      <a href="#sobre-mi"  class="overlay-link">Sobre mí</a>
+      <a href="#proyectos" class="overlay-link">Proyectos</a>
+      <a href="#contacto"  class="overlay-link">Contacto</a>
+    </nav>
+    <div class="menu-overlay-footer">Buenos Aires · 2025</div>
+  </div>
+
+  <!-- ============================================================
+       HERO — FULLSCREEN
+  ============================================================ -->
+  <section id="hero" class="hero">
+
+    <!-- Imagen de fondo (ruta: img/hero/hero.jpg) -->
+    <div class="hero-bg">
+      <img
+        src="img/hero/hero.jpg"
+        alt=""
+        class="hero-bg-img"
+        onerror="this.style.opacity=0"
+      >
+    </div>
+
+    <!-- Overlay gradiente -->
+    <div class="hero-overlay"></div>
+
+    <!-- Contenido central -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">Buenos Aires · Argentina</div>
+      <!-- El JS divide este texto letra por letra para la animación -->
+      <h1 class="hero-title" aria-label="Paloma Maseda">PALOMA MASEDA</h1>
+      <p class="hero-subtitle">DISEÑO TEXTIL · BIOMATERIALES</p>
+    </div>
+
+    <!-- Indicador de scroll -->
+    <div class="hero-scroll">
+      <span class="hero-scroll-text">SCROLL</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       MARQUEE — Cinta de texto continua entre secciones
+  ============================================================ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- Duplicado para loop continuo y perfecto -->
+      <span>BIOMATERIALES</span><span class="marquee-sep">·</span>
+      <span>DISEÑO TEXTIL</span><span class="marquee-sep">·</span>
+      <span>CELULOSA BACTERIANA</span><span class="marquee-sep">·</span>
+      <span>TINTES NATURALES</span><span class="marquee-sep">·</span>
+      <span>BORRA DE CAFÉ</span><span class="marquee-sep">·</span>
+      <span>FADU–UBA</span><span class="marquee-sep">·</span>
+      <span>INVESTIGACIÓN INDEPENDIENTE</span><span class="marquee-sep">·</span>
+      <span>BIOMATERIALES</span><span class="marquee-sep">·</span>
+      <span>DISEÑO TEXTIL</span><span class="marquee-sep">·</span>
+      <span>CELULOSA BACTERIANA</span><span class="marquee-sep">·</span>
+      <span>TINTES NATURALES</span><span class="marquee-sep">·</span>
+      <span>BORRA DE CAFÉ</span><span class="marquee-sep">·</span>
+      <span>FADU–UBA</span><span class="marquee-sep">·</span>
+      <span>INVESTIGACIÓN INDEPENDIENTE</span><span class="marquee-sep">·</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SOBRE MÍ
+  ============================================================ -->
+  <section id="sobre-mi" class="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Columna imagen -->
+        <div class="about-image-col">
+          <div class="about-image-wrap">
+            <div class="placeholder-label">FOTO</div>
+            <img
+              src="img/sobre-mi/paloma.jpg"
+              alt="Paloma Maseda"
+              class="about-img"
+              onerror="this.style.opacity=0"
+            >
+          </div>
+          <div class="about-caption">Buenos Aires, Argentina</div>
+        </div>
+
+        <!-- Columna texto -->
+        <div class="about-text-col">
+          <div class="section-label">01 — SOBRE MÍ</div>
+
+          <h2 class="about-heading">
+            Diseñadora textil.<br>
+            <em>En busca de materiales</em><br>
+            <em>alternativos.</em>
+          </h2>
+
+          <div class="about-body">
+            <p>
+              Mi formación comenzó en un colegio de pedagogía Waldorf, donde aprendí a observar
+              el mundo desde la creatividad, la sensorialidad y el respeto profundo por los
+              materiales nobles y los procesos naturales. Ese enfoque moldeó mi forma de venerar
+              la naturaleza y mi preocupación por la contaminación del medioambiente.
+            </p>
+            <p>
+              Para graduarme de mis estudios secundarios en 2023, dediqué un año entero a
+              investigar los biomateriales. La investigación tuvo dos fases: una teórica,
+              materializada en el libro <em>"Biomateriales: una alternativa para la industria textil"</em>,
+              que incluye entrevistas a referentes del sector como Elia Gasparolo; y una práctica,
+              con cursos junto a Laura Messing, Cinthya Nudel, Carolina Etchevers y Ludmila Ledesma.
+            </p>
+            <p>
+              También confeccioné una prenda realizada con biomateriales, no para darle un uso
+              cotidiano, sino como objeto de concientización social acerca de la contaminación de
+              la industria textil.
+            </p>
+            <p>
+              Actualmente soy estudiante de Diseño Textil en FADU, Facultad de Arquitectura,
+              Diseño y Urbanismo de la Universidad de Buenos Aires, y también realicé cursos
+              complementarios como <em>"Materiales del siglo XXI"</em>, dictado por el INTI, y
+              <em>"Diseño textil digital"</em>, por Natalia Spitzer. Sigo investigando y produciendo
+              biomateriales de forma independiente, con el objetivo de llevarlos a una escala
+              industrial y aplicarlos en la indumentaria.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROYECTOS
+       ─────────────────────────────────────────────────────────
+       Para agregar un quinto proyecto:
+       1. Copiar un bloque <article class="project-item"> completo
+       2. Si el proyecto anterior fue --reverse, este NO lleva --reverse (y viceversa)
+       3. Cambiar data-index, contenido y rutas de imágenes
+       4. No es necesario tocar CSS ni JS
+  ============================================================ -->
+  <section id="proyectos" class="projects">
+    <div class="container">
+
+      <div class="projects-header">
+        <div class="section-label">02 — PROYECTOS</div>
+        <h2 class="section-title">Investigación<br><em>&amp; Producción</em></h2>
+      </div>
+
+      <!-- ── PROYECTO 01 ─────────────────────────────────── -->
+      <article class="project-item" data-index="01">
+
+        <div class="project-image-col">
+          <div class="project-image-wrap">
+            <div class="placeholder-label">CELULOSA BACTERIANA</div>
+            <img
+              src="img/proyectos/celulosa/cover.jpg"
+              alt="Celulosa Bacteriana — Paloma Maseda"
+              class="project-img"
+              onerror="this.style.opacity=0"
+              data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg|img/proyectos/celulosa/06.jpg"
+            >
+            <div class="project-overlay">
+              <span class="project-overlay-text">VER GALERÍA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content-col">
+          <div class="project-number" aria-hidden="true">01</div>
+          <h3 class="project-title">Celulosa<br>Bacteriana</h3>
+          <div class="project-tags">
+            <span class="tag">SCOBY</span>
+            <span class="tag">Bolso</span>
+          </div>
+          <p class="project-desc">
+            Producción de biomaterial a partir de celulosa bacteriana, el cual se obtiene al
+            deshidratar el subproducto sólido del cultivo del SCOBY (symbiotic colony of bacteria
+            and yeast) de la kombucha. El material tiene una consistencia gelatinosa en húmedo y
+            un aspecto de piel flexible y maleable en seco. Este proceso de fermentación es
+            completamente natural y no resulta contaminante en ninguna instancia. Además, es
+            biodegradable y compostable.
+          </p>
+          <button
+            class="project-btn"
+            data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg|img/proyectos/celulosa/06.jpg"
+            aria-label="Ver galería de Celulosa Bacteriana"
+          >
+            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+      </article>
+
+      <!-- ── PROYECTO 02 ─────────────────────────────────── -->
+      <article class="project-item project-item--reverse" data-index="02">
+
+        <div class="project-image-col">
+          <div class="project-image-wrap">
+            <div class="placeholder-label">BORRA DE CAFÉ</div>
+            <img
+              src="img/proyectos/cafe/cover.jpg"
+              alt="Borra de Café — Paloma Maseda"
+              class="project-img"
+              onerror="this.style.opacity=0"
+              data-gallery="img/proyectos/cafe/cover.jpg|img/proyectos/cafe/01.jpg|img/proyectos/cafe/02.jpg|img/proyectos/cafe/03.jpg|img/proyectos/cafe/04.jpg|img/proyectos/cafe/05.jpg|img/proyectos/cafe/06.jpg|img/proyectos/cafe/07.jpg|img/proyectos/cafe/08.jpg|img/proyectos/cafe/09.jpg|img/proyectos/cafe/10.jpg|img/proyectos/cafe/11.jpg"
+            >
+            <div class="project-overlay">
+              <span class="project-overlay-text">VER GALERÍA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content-col">
+          <div class="project-number" aria-hidden="true">02</div>
+          <h3 class="project-title">Biocuero<br>de Café</h3>
+          <div class="project-tags">
+            <span class="tag">Gran Formato</span>
+            <span class="tag">Indumentaria</span>
+            <span class="tag">Iluminación</span>
+          </div>
+          <p class="project-desc">
+            Biocuero obtenido a partir de la borra de café, uno de los descartes orgánicos más
+            abundantes del entorno urbano. Es un material visualmente similar al cuero, flexible y
+            con una textura porosa.
+          </p>
+          <button
+            class="project-btn"
+            data-gallery="img/proyectos/cafe/cover.jpg|img/proyectos/cafe/01.jpg|img/proyectos/cafe/02.jpg|img/proyectos/cafe/03.jpg|img/proyectos/cafe/04.jpg|img/proyectos/cafe/05.jpg|img/proyectos/cafe/06.jpg|img/proyectos/cafe/07.jpg|img/proyectos/cafe/08.jpg|img/proyectos/cafe/09.jpg|img/proyectos/cafe/10.jpg|img/proyectos/cafe/11.jpg"
+            aria-label="Ver galería de Borra de Café"
+          >
+            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+      </article>
+
+      <!-- ── PROYECTO 03 ─────────────────────────────────── -->
+      <article class="project-item" data-index="03">
+
+        <div class="project-image-col">
+          <div class="project-image-wrap">
+            <div class="placeholder-label">TINTES NATURALES</div>
+            <img
+              src="img/proyectos/tintes/cover.jpg"
+              alt="Tintes Naturales — Paloma Maseda"
+              class="project-img"
+              onerror="this.style.opacity=0"
+              data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg|img/proyectos/tintes/09.jpg|img/proyectos/tintes/10.jpg"
+            >
+            <div class="project-overlay">
+              <span class="project-overlay-text">VER GALERÍA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content-col">
+          <div class="project-number" aria-hidden="true">03</div>
+          <h3 class="project-title">Tintes<br>Naturales</h3>
+          <div class="project-tags">
+            <span class="tag">Pigmentos</span>
+            <span class="tag">Descartes Orgánicos</span>
+            <span class="tag">Proceso</span>
+          </div>
+          <p class="project-desc">
+            Extracción y aplicación de pigmentos naturales a partir de descartes orgánicos:
+            remolacha, clorella, matcha, café, cebolla, zanahoria y otros. Cada material vegetal
+            ofrece un rango tonal único que varía según mordiente y cocción, generando paletas
+            imposibles de replicar industrialmente.
+          </p>
+          <button
+            class="project-btn"
+            data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg|img/proyectos/tintes/09.jpg|img/proyectos/tintes/10.jpg"
+            aria-label="Ver galería de Tintes Naturales"
+          >
+            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+      </article>
+
+      <!-- ── PROYECTO 04 ─────────────────────────────────── -->
+      <article class="project-item project-item--reverse" data-index="04">
+
+        <div class="project-image-col">
+          <div class="project-image-wrap">
+            <div class="placeholder-label">SEGUNDA PIEL</div>
+            <img
+              src="img/proyectos/segunda-piel/cover.jpg"
+              alt="La indumentaria como segunda piel — Paloma Maseda"
+              class="project-img"
+              onerror="this.style.opacity=0"
+              data-gallery="img/proyectos/segunda-piel/cover.jpg|img/proyectos/segunda-piel/01.jpg|img/proyectos/segunda-piel/02.jpg|img/proyectos/segunda-piel/03.jpg|img/proyectos/segunda-piel/04.jpg|img/proyectos/segunda-piel/05.jpg"
+            >
+            <div class="project-overlay">
+              <span class="project-overlay-text">VER GALERÍA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content-col">
+          <div class="project-number" aria-hidden="true">04</div>
+          <h3 class="project-title">La indumentaria<br>como segunda piel</h3>
+          <div class="project-tags">
+            <span class="tag">Celulosa Bacteriana</span>
+            <span class="tag">Tinte de Remolacha</span>
+            <span class="tag">Obra de Graduación</span>
+          </div>
+          <p class="project-desc">
+            Obra de graduación. Celulosa bacteriana teñida con remolacha que explora las propiedades
+            curativas del material y su similitud con la anatomía humana. La prenda funciona como
+            una segunda piel orgánica: viva, frágil, translúcida. Un manifiesto sobre la relación
+            entre el cuerpo, la indumentaria y los materiales del futuro.
+          </p>
+          <button
+            class="project-btn"
+            data-gallery="img/proyectos/segunda-piel/cover.jpg|img/proyectos/segunda-piel/01.jpg|img/proyectos/segunda-piel/02.jpg|img/proyectos/segunda-piel/03.jpg|img/proyectos/segunda-piel/04.jpg|img/proyectos/segunda-piel/05.jpg"
+            aria-label="Ver galería de La indumentaria como segunda piel"
+          >
+            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+      </article>
+
+    </div><!-- /container -->
+  </section>
+
+  <!-- ============================================================
+       CONTACTO
+  ============================================================ -->
+  <section id="contacto" class="contact">
+    <div class="contact-inner">
+      <div class="contact-copy">
+        <div class="section-label">03 — CONTACTO</div>
+        <h2 class="contact-heading">
+          Conversemos.
+        </h2>
+        <p class="contact-intro">
+          Si querés escribir por una pieza, una investigación, una producción
+          o una colaboración, este es el mejor lugar para empezar.
+        </p>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:palomaseda6@gmail.com" class="contact-link">
+          <span class="contact-link-kicker">Email</span>
+          <span class="contact-link-value">palomaseda6@gmail.com</span>
+          <span class="contact-link-meta">Escribime directo</span>
+          <span class="contact-link-arrow" aria-hidden="true">↗</span>
+        </a>
+
+        <a href="https://instagram.com/biotextiless" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <span class="contact-link-kicker">Instagram</span>
+          <span class="contact-link-value">@biotextiless</span>
+          <span class="contact-link-meta">Proceso, pruebas y proyectos</span>
+          <span class="contact-link-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">PALOMA MASEDA</span>
+      <span class="footer-copy">© 2025 — Diseño Textil &amp; Biomateriales</span>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       LIGHTBOX
+  ============================================================ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de imágenes">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar galería">✕</button>
+    <button class="lightbox-prev"  id="lightboxPrev"  aria-label="Imagen anterior">←</button>
+    <button class="lightbox-next"  id="lightboxNext"  aria-label="Imagen siguiente">→</button>
+    <div class="lightbox-content">
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter" aria-live="polite"></div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS — GSAP via CDN
+  ============================================================ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
+
+<!--
+════════════════════════════════════════════════════════════════
+  GUÍA DE IMÁGENES — Dónde colocar cada archivo
+════════════════════════════════════════════════════════════════
+
+Colocá las imágenes con EXACTAMENTE estos nombres y rutas:
+
+img/
+├── hero/
+│   └── hero.jpg              ← Imagen de fondo del hero (fullscreen).
+│                                Formato horizontal, mínimo 1920×1080 px.
+│
+├── sobre-mi/
+│   └── paloma.jpg            ← Foto de Paloma. Formato vertical (retrato),
+│                                mínimo 800×1067 px (relación 3:4).
+│
+└── proyectos/
+    ├── celulosa/
+    │   ├── cover.jpg         ← Imagen principal del proyecto (se ve en el grid).
+    │   ├── 01.jpg            ← Fotos del proyecto (galería lightbox).
+    │   ├── 02.jpg            ← Podés agregar tantas como quieras:
+    │   ├── 03.jpg              05.jpg, 06.jpg, etc.
+    │   └── 04.jpg            ← Solo recordá agregar la ruta en data-gallery del HTML.
+    │
+    ├── cafe/
+    │   ├── cover.jpg
+    │   ├── 01.jpg
+    │   ├── 02.jpg
+    │   └── 03.jpg
+    │
+    ├── tintes/
+    │   ├── cover.jpg
+    │   ├── 01.jpg
+    │   ├── 02.jpg
+    │   ├── 03.jpg
+    │   └── 04.jpg
+    │
+    └── segunda-piel/
+        ├── cover.jpg
+        ├── 01.jpg
+        ├── 02.jpg
+        └── 03.jpg
+
+NOTAS:
+- Todas las imágenes en JPG o WEBP (JPG es más compatible).
+- Las imágenes de cover.jpg se muestran con relación 4:5 (vertical).
+  Recomendado: mínimo 800×1000 px.
+- Si no tenés una imagen todavía, dejá la carpeta vacía:
+  aparecerá un placeholder oscuro automáticamente.
+- Para agregar más fotos a una galería: agregá el archivo y
+  sumá su ruta al atributo data-gallery del <img> y del <button>
+  correspondiente en el HTML (separada por el carácter |).
+
+════════════════════════════════════════════════════════════════
+-->
