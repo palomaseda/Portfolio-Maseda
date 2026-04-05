@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ── Iniciar todo cuando el DOM esté listo ───────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  initLanguage();
   initCursor();
   initNavbar();
   initMobileMenu();
@@ -16,6 +17,207 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initLightbox();
 });
+
+const translations = {
+  es: {
+    meta: {
+      title: 'Paloma Maseda — Diseño Textil',
+      description: 'Paloma Maseda — Diseñadora textil enfocada en biomateriales, investigación y producción independiente en Buenos Aires.',
+      ogLocale: 'es_AR',
+    },
+    nav: {
+      about: 'Sobre mí',
+      projects: 'Proyectos',
+      contact: 'Contacto',
+    },
+    hero: {
+      subtitle: 'DISEÑO TEXTIL · BIOMATERIALES',
+    },
+    marquee: {
+      items: 'BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE · BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE',
+    },
+    about: {
+      label: '01 — SOBRE MÍ',
+      heading: 'Diseñadora textil.<br><em>En busca de materiales</em><br><em>alternativos.</em>',
+      p1: 'Mi formación comenzó en un colegio de pedagogía Waldorf, donde aprendí a observar el mundo desde la creatividad, la sensorialidad y el respeto profundo por los materiales nobles y los procesos naturales. Ese enfoque moldeó mi forma de venerar la naturaleza y mi preocupación por la contaminación del medioambiente.',
+      p2: 'Para graduarme de mis estudios secundarios en 2023, dediqué un año entero a investigar los biomateriales. La investigación tuvo dos fases: una teórica, materializada en el libro <em>"Biomateriales: una alternativa para la industria textil"</em>, que incluye entrevistas a referentes del sector como Elia Gasparolo; y una práctica, con cursos junto a Laura Messing, Cinthya Nudel, Carolina Etchevers y Ludmila Ledesma.',
+      p3: 'También confeccioné una prenda realizada con biomateriales, no para darle un uso cotidiano, sino como objeto de concientización social acerca de la contaminación de la industria textil.',
+      p4: 'Actualmente soy estudiante de Diseño Textil en FADU, Facultad de Arquitectura, Diseño y Urbanismo de la Universidad de Buenos Aires, y también realicé cursos complementarios como <em>"Materiales del siglo XXI"</em>, dictado por el INTI, y <em>"Diseño textil digital"</em>, por Natalia Spitzer. Sigo investigando y produciendo biomateriales de forma independiente, con el objetivo de llevarlos a una escala industrial y aplicarlos en la indumentaria.',
+    },
+    projects: {
+      label: '02 — PROYECTOS',
+      title: 'Investigación<br><em>&amp; Producción</em>',
+      viewGallery: 'Ver galería',
+    },
+    project: {
+      celulosa: {
+        title: 'Celulosa<br>Bacteriana',
+        tag1: 'SCOBY',
+        tag2: 'Bolso',
+        desc: 'Producción de biomaterial a partir de celulosa bacteriana, el cual se obtiene al deshidratar el subproducto sólido del cultivo del SCOBY (symbiotic colony of bacteria and yeast) de la kombucha. El material tiene una consistencia gelatinosa en húmedo y un aspecto de piel flexible y maleable en seco. Este proceso de fermentación es completamente natural y no resulta contaminante en ninguna instancia. Además, es biodegradable y compostable.',
+      },
+      cafe: {
+        title: 'Biocuero<br>de Café',
+        tag1: 'Gran Formato',
+        tag2: 'Indumentaria',
+        tag3: 'Iluminación',
+        desc: 'Biocuero obtenido a partir de la borra de café, uno de los descartes orgánicos más abundantes del entorno urbano. Es un material visualmente similar al cuero, flexible y con una textura porosa.',
+      },
+      tintes: {
+        title: 'Tintes<br>Naturales',
+        tag1: 'Pigmentos',
+        tag2: 'Descartes Orgánicos',
+        tag3: 'Proceso',
+        desc: 'Extracción y aplicación de pigmentos naturales a partir de descartes orgánicos: remolacha, clorella, matcha, café, cebolla, zanahoria y otros. Cada material vegetal ofrece un rango tonal único que varía según mordiente y cocción, generando paletas imposibles de replicar industrialmente.',
+      },
+      segundaPiel: {
+        title: 'La indumentaria<br>como segunda piel',
+        tag1: 'Celulosa Bacteriana',
+        tag2: 'Tinte de Remolacha',
+        tag3: 'Obra de Graduación',
+        desc: 'Obra de graduación. Celulosa bacteriana teñida con remolacha que explora las propiedades curativas del material y su similitud con la anatomía humana. La prenda funciona como una segunda piel orgánica: viva, frágil, translúcida. Un manifiesto sobre la relación entre el cuerpo, la indumentaria y los materiales del futuro.',
+      },
+    },
+    contact: {
+      label: '03 — CONTACTO',
+      heading: 'Conversemos.',
+      intro: 'Si querés escribir por una pieza, una investigación, una producción o una colaboración, este es el mejor lugar para empezar.',
+      emailLabel: 'Email',
+      emailMeta: 'Escribime directo',
+      instagramMeta: 'Proceso, pruebas y proyectos',
+    },
+    footer: {
+      copy: '© 2025 — Diseño Textil & Biomateriales',
+    },
+  },
+  en: {
+    meta: {
+      title: 'Paloma Maseda — Textile Design',
+      description: 'Paloma Maseda — Textile designer focused on biomaterials, research and independent production in Buenos Aires.',
+      ogLocale: 'en_US',
+    },
+    nav: {
+      about: 'About',
+      projects: 'Projects',
+      contact: 'Contact',
+    },
+    hero: {
+      subtitle: 'TEXTILE DESIGN · BIOMATERIALS',
+    },
+    marquee: {
+      items: 'BIOMATERIALS · TEXTILE DESIGN · BACTERIAL CELLULOSE · NATURAL DYES · COFFEE GROUNDS · FADU–UBA · INDEPENDENT RESEARCH · BIOMATERIALS · TEXTILE DESIGN · BACTERIAL CELLULOSE · NATURAL DYES · COFFEE GROUNDS · FADU–UBA · INDEPENDENT RESEARCH',
+    },
+    about: {
+      label: '01 — ABOUT',
+      heading: 'Textile designer.<br><em>In search of alternative</em><br><em>materials.</em>',
+      p1: 'My education began at a Waldorf school, where I learned to observe the world through creativity, sensory awareness, and a deep respect for noble materials and natural processes. That approach shaped the way I honor nature and my concern about environmental contamination.',
+      p2: 'To graduate from secondary school in 2023, I devoted an entire year to researching biomaterials. The research had two phases: a theoretical one, materialized in the book <em>"Biomaterials: an alternative for the textile industry"</em>, which includes interviews with sector references such as Elia Gasparolo; and a practical one, through courses with Laura Messing, Cinthya Nudel, Carolina Etchevers, and Ludmila Ledesma.',
+      p3: 'I also created a garment made with biomaterials, not for everyday use, but as an object of social awareness about the pollution generated by the textile industry.',
+      p4: 'I am currently studying Textile Design at FADU, the Faculty of Architecture, Design and Urbanism at the University of Buenos Aires, and I have also completed complementary courses such as <em>"Materials of the 21st Century"</em> at INTI and <em>"Digital Textile Design"</em> with Natalia Spitzer. I continue researching and producing biomaterials independently, with the goal of bringing them to an industrial scale and applying them to fashion.',
+    },
+    projects: {
+      label: '02 — PROJECTS',
+      title: 'Research<br><em>&amp; Production</em>',
+      viewGallery: 'View gallery',
+    },
+    project: {
+      celulosa: {
+        title: 'Bacterial<br>Cellulose',
+        tag1: 'SCOBY',
+        tag2: 'Bag',
+        desc: 'Biomaterial production based on bacterial cellulose, obtained by dehydrating the solid byproduct of the kombucha SCOBY culture (symbiotic colony of bacteria and yeast). The material has a gelatinous consistency when wet and a flexible, skin-like appearance when dry. This fermentation process is entirely natural and non-polluting at every stage. It is also biodegradable and compostable.',
+      },
+      cafe: {
+        title: 'Coffee<br>Biomaterial',
+        tag1: 'Large Format',
+        tag2: 'Fashion',
+        tag3: 'Lighting',
+        desc: 'A biomaterial obtained from used coffee grounds, one of the most abundant organic residues in urban environments. It is visually similar to leather, flexible, and has a porous texture.',
+      },
+      tintes: {
+        title: 'Natural<br>Dyes',
+        tag1: 'Pigments',
+        tag2: 'Organic Waste',
+        tag3: 'Process',
+        desc: 'Extraction and application of natural pigments from organic waste such as beetroot, chlorella, matcha, coffee, onion, carrot, and more. Each plant-based material offers a unique tonal range that changes according to mordant and cooking process, creating palettes impossible to replicate industrially.',
+      },
+      segundaPiel: {
+        title: 'Garment as a<br>Second Skin',
+        tag1: 'Bacterial Cellulose',
+        tag2: 'Beet Dye',
+        tag3: 'Graduation Project',
+        desc: 'Graduation project. Bacterial cellulose dyed with beetroot explores the healing properties of the material and its resemblance to human anatomy. The garment functions as an organic second skin: alive, fragile, and translucent. A statement on the relationship between the body, clothing, and the materials of the future.',
+      },
+    },
+    contact: {
+      label: '03 — CONTACT',
+      heading: 'Let’s talk.',
+      intro: 'If you want to get in touch about a piece, research, production, or a collaboration, this is the best place to start.',
+      emailLabel: 'Email',
+      emailMeta: 'Write to me directly',
+      instagramMeta: 'Process, tests, and projects',
+    },
+    footer: {
+      copy: '© 2025 — Textile Design & Biomaterials',
+    },
+  },
+};
+
+function getTranslationValue(lang, key) {
+  return key.split('.').reduce((acc, part) => acc && acc[part], translations[lang]);
+}
+
+function applyLanguage(lang) {
+  const dict = translations[lang] || translations.es;
+
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const value = getTranslationValue(lang, el.dataset.i18n);
+    if (typeof value === 'string') el.textContent = value;
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+    const value = getTranslationValue(lang, el.dataset.i18nHtml);
+    if (typeof value === 'string') el.innerHTML = value;
+  });
+
+  document.title = dict.meta.title;
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDescription = document.querySelector('meta[property="og:description"]');
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+  const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+
+  if (metaDescription) metaDescription.content = dict.meta.description;
+  if (ogTitle) ogTitle.content = dict.meta.title;
+  if (ogDescription) ogDescription.content = dict.meta.description;
+  if (ogLocale) ogLocale.content = dict.meta.ogLocale;
+  if (twitterTitle) twitterTitle.content = dict.meta.title;
+  if (twitterDescription) twitterDescription.content = dict.meta.description;
+
+  document.querySelectorAll('.lang-toggle').forEach((button) => {
+    button.textContent = lang === 'es' ? 'EN' : 'ES';
+  });
+}
+
+function initLanguage() {
+  const savedLang = localStorage.getItem('paloma-lang');
+  const initialLang = savedLang === 'en' ? 'en' : 'es';
+
+  applyLanguage(initialLang);
+
+  document.querySelectorAll('.lang-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const currentLang = document.documentElement.lang === 'en' ? 'en' : 'es';
+      const nextLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('paloma-lang', nextLang);
+      applyLanguage(nextLang);
+    });
+  });
+}
 
 
 /* ══════════════════════════════════════════════════════════════

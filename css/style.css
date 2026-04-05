@@ -228,6 +228,30 @@ body.cursor-hover .cursor-dot {
   gap: var(--sp-8);
 }
 
+.lang-toggle {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  border: 1px solid var(--c-border);
+  padding: 0.55rem 0.8rem 0.5rem;
+  transition: border-color var(--t-fast), color var(--t-fast), background var(--t-fast);
+}
+
+.lang-toggle:hover {
+  color: var(--c-text);
+  border-color: var(--c-text-muted);
+  background: rgba(255, 252, 247, 0.72);
+}
+
+.lang-toggle--overlay {
+  position: absolute;
+  top: calc(var(--nav-h) / 2);
+  right: var(--pad-x);
+  transform: translateY(-50%);
+}
+
 .nav-link {
   font-size: 0.68rem;
   font-weight: 400;
@@ -476,10 +500,6 @@ body.cursor-hover .cursor-dot {
   text-transform: uppercase;
   color: var(--c-text-muted);
   white-space: nowrap;
-}
-.marquee-sep {
-  color: var(--c-accent) !important;
-  font-size: 0.5rem !important;
 }
 
 @keyframes marqueeScroll {
@@ -1088,6 +1108,12 @@ body.cursor-hover .cursor-dot {
   /* Nav: mostrar hamburger, ocultar links */
   .nav-links  { display: none; }
   .hamburger  { display: flex; }
+  .lang-toggle {
+    display: none;
+  }
+  .lang-toggle--overlay {
+    display: inline-flex;
+  }
 
   /* About: apilar columnas */
   .about-grid {

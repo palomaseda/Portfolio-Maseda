@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Paloma Maseda — Diseñadora Textil especializada en Biomateriales. Buenos Aires.">
+  <meta name="description" content="Paloma Maseda — Diseñadora textil enfocada en biomateriales, investigación y producción independiente en Buenos Aires.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#faf7f2">
+  <link rel="canonical" href="https://palomaseda.github.io/Portfolio-Maseda/">
+  <link rel="alternate" hreflang="es" href="https://palomaseda.github.io/Portfolio-Maseda/">
+  <link rel="alternate" hreflang="en" href="https://palomaseda.github.io/Portfolio-Maseda/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://palomaseda.github.io/Portfolio-Maseda/">
+  <meta property="og:site_name" content="Paloma Maseda">
+  <meta property="og:locale" content="es_AR">
   <meta property="og:title" content="Paloma Maseda — Diseño Textil">
-  <meta property="og:description" content="Diseñadora textil especializada en biomateriales. Investigación y producción independiente.">
+  <meta property="og:description" content="Diseñadora textil enfocada en biomateriales, investigación y producción independiente en Buenos Aires.">
+  <meta property="og:image" content="https://palomaseda.github.io/Portfolio-Maseda/img/proyectos/celulosa/cover.jpg">
+  <meta property="og:image:alt" content="Proyecto de biomateriales de Paloma Maseda">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Paloma Maseda — Diseño Textil">
+  <meta name="twitter:description" content="Diseñadora textil enfocada en biomateriales, investigación y producción independiente en Buenos Aires.">
+  <meta name="twitter:image" content="https://palomaseda.github.io/Portfolio-Maseda/img/proyectos/celulosa/cover.jpg">
   <title>Paloma Maseda — Diseño Textil</title>
 
   <!-- Google Fonts: Cormorant Garamond (títulos) + Inter (cuerpo) -->
@@ -32,10 +47,12 @@
       <a href="#hero" class="nav-logo">PM</a>
 
       <div class="nav-links">
-        <a href="#sobre-mi"  class="nav-link">Sobre mí</a>
-        <a href="#proyectos" class="nav-link">Proyectos</a>
-        <a href="#contacto"  class="nav-link">Contacto</a>
+        <a href="#sobre-mi"  class="nav-link" data-i18n="nav.about">Sobre mí</a>
+        <a href="#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
+        <a href="#contacto"  class="nav-link" data-i18n="nav.contact">Contacto</a>
       </div>
+
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
 
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span>
@@ -49,10 +66,11 @@
   ============================================================ -->
   <div class="menu-overlay" id="menuOverlay" role="dialog" aria-label="Menú de navegación">
     <nav class="menu-overlay-links">
-      <a href="#sobre-mi"  class="overlay-link">Sobre mí</a>
-      <a href="#proyectos" class="overlay-link">Proyectos</a>
-      <a href="#contacto"  class="overlay-link">Contacto</a>
+      <a href="#sobre-mi"  class="overlay-link" data-i18n="nav.about">Sobre mí</a>
+      <a href="#proyectos" class="overlay-link" data-i18n="nav.projects">Proyectos</a>
+      <a href="#contacto"  class="overlay-link" data-i18n="nav.contact">Contacto</a>
     </nav>
+    <button class="lang-toggle lang-toggle--overlay" id="langToggleOverlay" type="button" aria-label="Switch language">EN</button>
     <div class="menu-overlay-footer">Buenos Aires · 2025</div>
   </div>
 
@@ -79,7 +97,7 @@
       <div class="hero-eyebrow">Buenos Aires · Argentina</div>
       <!-- El JS divide este texto letra por letra para la animación -->
       <h1 class="hero-title" aria-label="Paloma Maseda">PALOMA MASEDA</h1>
-      <p class="hero-subtitle">DISEÑO TEXTIL · BIOMATERIALES</p>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">DISEÑO TEXTIL · BIOMATERIALES</p>
     </div>
 
     <!-- Indicador de scroll -->
@@ -95,21 +113,7 @@
   ============================================================ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <!-- Duplicado para loop continuo y perfecto -->
-      <span>BIOMATERIALES</span><span class="marquee-sep">·</span>
-      <span>DISEÑO TEXTIL</span><span class="marquee-sep">·</span>
-      <span>CELULOSA BACTERIANA</span><span class="marquee-sep">·</span>
-      <span>TINTES NATURALES</span><span class="marquee-sep">·</span>
-      <span>BORRA DE CAFÉ</span><span class="marquee-sep">·</span>
-      <span>FADU–UBA</span><span class="marquee-sep">·</span>
-      <span>INVESTIGACIÓN INDEPENDIENTE</span><span class="marquee-sep">·</span>
-      <span>BIOMATERIALES</span><span class="marquee-sep">·</span>
-      <span>DISEÑO TEXTIL</span><span class="marquee-sep">·</span>
-      <span>CELULOSA BACTERIANA</span><span class="marquee-sep">·</span>
-      <span>TINTES NATURALES</span><span class="marquee-sep">·</span>
-      <span>BORRA DE CAFÉ</span><span class="marquee-sep">·</span>
-      <span>FADU–UBA</span><span class="marquee-sep">·</span>
-      <span>INVESTIGACIÓN INDEPENDIENTE</span><span class="marquee-sep">·</span>
+      <span data-i18n="marquee.items">BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE · BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE</span>
     </div>
   </div>
 
@@ -136,34 +140,34 @@
 
         <!-- Columna texto -->
         <div class="about-text-col">
-          <div class="section-label">01 — SOBRE MÍ</div>
+          <div class="section-label" data-i18n="about.label">01 — SOBRE MÍ</div>
 
-          <h2 class="about-heading">
+          <h2 class="about-heading" data-i18n-html="about.heading">
             Diseñadora textil.<br>
             <em>En busca de materiales</em><br>
             <em>alternativos.</em>
           </h2>
 
           <div class="about-body">
-            <p>
+            <p data-i18n="about.p1">
               Mi formación comenzó en un colegio de pedagogía Waldorf, donde aprendí a observar
               el mundo desde la creatividad, la sensorialidad y el respeto profundo por los
               materiales nobles y los procesos naturales. Ese enfoque moldeó mi forma de venerar
               la naturaleza y mi preocupación por la contaminación del medioambiente.
             </p>
-            <p>
+            <p data-i18n-html="about.p2">
               Para graduarme de mis estudios secundarios en 2023, dediqué un año entero a
               investigar los biomateriales. La investigación tuvo dos fases: una teórica,
               materializada en el libro <em>"Biomateriales: una alternativa para la industria textil"</em>,
               que incluye entrevistas a referentes del sector como Elia Gasparolo; y una práctica,
               con cursos junto a Laura Messing, Cinthya Nudel, Carolina Etchevers y Ludmila Ledesma.
             </p>
-            <p>
+            <p data-i18n="about.p3">
               También confeccioné una prenda realizada con biomateriales, no para darle un uso
               cotidiano, sino como objeto de concientización social acerca de la contaminación de
               la industria textil.
             </p>
-            <p>
+            <p data-i18n-html="about.p4">
               Actualmente soy estudiante de Diseño Textil en FADU, Facultad de Arquitectura,
               Diseño y Urbanismo de la Universidad de Buenos Aires, y también realicé cursos
               complementarios como <em>"Materiales del siglo XXI"</em>, dictado por el INTI, y
@@ -191,8 +195,8 @@
     <div class="container">
 
       <div class="projects-header">
-        <div class="section-label">02 — PROYECTOS</div>
-        <h2 class="section-title">Investigación<br><em>&amp; Producción</em></h2>
+        <div class="section-label" data-i18n="projects.label">02 — PROYECTOS</div>
+        <h2 class="section-title" data-i18n-html="projects.title">Investigación<br><em>&amp; Producción</em></h2>
       </div>
 
       <!-- ── PROYECTO 01 ─────────────────────────────────── -->
@@ -206,7 +210,7 @@
               alt="Celulosa Bacteriana — Paloma Maseda"
               class="project-img"
               onerror="this.style.opacity=0"
-              data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg|img/proyectos/celulosa/06.jpg"
+              data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg"
             >
             <div class="project-overlay">
               <span class="project-overlay-text">VER GALERÍA</span>
@@ -216,12 +220,12 @@
 
         <div class="project-content-col">
           <div class="project-number" aria-hidden="true">01</div>
-          <h3 class="project-title">Celulosa<br>Bacteriana</h3>
+          <h3 class="project-title" data-i18n-html="project.celulosa.title">Celulosa<br>Bacteriana</h3>
           <div class="project-tags">
-            <span class="tag">SCOBY</span>
-            <span class="tag">Bolso</span>
+            <span class="tag" data-i18n="project.celulosa.tag1">SCOBY</span>
+            <span class="tag" data-i18n="project.celulosa.tag2">Bolso</span>
           </div>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="project.celulosa.desc">
             Producción de biomaterial a partir de celulosa bacteriana, el cual se obtiene al
             deshidratar el subproducto sólido del cultivo del SCOBY (symbiotic colony of bacteria
             and yeast) de la kombucha. El material tiene una consistencia gelatinosa en húmedo y
@@ -231,10 +235,10 @@
           </p>
           <button
             class="project-btn"
-            data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg|img/proyectos/celulosa/06.jpg"
+            data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg"
             aria-label="Ver galería de Celulosa Bacteriana"
           >
-            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+            <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
         </div>
 
@@ -251,7 +255,7 @@
               alt="Borra de Café — Paloma Maseda"
               class="project-img"
               onerror="this.style.opacity=0"
-              data-gallery="img/proyectos/cafe/cover.jpg|img/proyectos/cafe/01.jpg|img/proyectos/cafe/02.jpg|img/proyectos/cafe/03.jpg|img/proyectos/cafe/04.jpg|img/proyectos/cafe/05.jpg|img/proyectos/cafe/06.jpg|img/proyectos/cafe/07.jpg|img/proyectos/cafe/08.jpg|img/proyectos/cafe/09.jpg|img/proyectos/cafe/10.jpg|img/proyectos/cafe/11.jpg"
+              data-gallery="img/proyectos/cafe/cover.jpg|img/proyectos/cafe/01.jpg|img/proyectos/cafe/02.jpg|img/proyectos/cafe/03.jpg|img/proyectos/cafe/04.jpg|img/proyectos/cafe/05.jpg|img/proyectos/cafe/06.jpg|img/proyectos/cafe/07.jpg"
             >
             <div class="project-overlay">
               <span class="project-overlay-text">VER GALERÍA</span>
@@ -261,23 +265,23 @@
 
         <div class="project-content-col">
           <div class="project-number" aria-hidden="true">02</div>
-          <h3 class="project-title">Biocuero<br>de Café</h3>
+          <h3 class="project-title" data-i18n-html="project.cafe.title">Biocuero<br>de Café</h3>
           <div class="project-tags">
-            <span class="tag">Gran Formato</span>
-            <span class="tag">Indumentaria</span>
-            <span class="tag">Iluminación</span>
+            <span class="tag" data-i18n="project.cafe.tag1">Gran Formato</span>
+            <span class="tag" data-i18n="project.cafe.tag2">Indumentaria</span>
+            <span class="tag" data-i18n="project.cafe.tag3">Iluminación</span>
           </div>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="project.cafe.desc">
             Biocuero obtenido a partir de la borra de café, uno de los descartes orgánicos más
             abundantes del entorno urbano. Es un material visualmente similar al cuero, flexible y
             con una textura porosa.
           </p>
           <button
             class="project-btn"
-            data-gallery="img/proyectos/cafe/cover.jpg|img/proyectos/cafe/01.jpg|img/proyectos/cafe/02.jpg|img/proyectos/cafe/03.jpg|img/proyectos/cafe/04.jpg|img/proyectos/cafe/05.jpg|img/proyectos/cafe/06.jpg|img/proyectos/cafe/07.jpg|img/proyectos/cafe/08.jpg|img/proyectos/cafe/09.jpg|img/proyectos/cafe/10.jpg|img/proyectos/cafe/11.jpg"
+            data-gallery="img/proyectos/cafe/cover.jpg|img/proyectos/cafe/01.jpg|img/proyectos/cafe/02.jpg|img/proyectos/cafe/03.jpg|img/proyectos/cafe/04.jpg|img/proyectos/cafe/05.jpg|img/proyectos/cafe/06.jpg|img/proyectos/cafe/07.jpg"
             aria-label="Ver galería de Borra de Café"
           >
-            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+            <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
         </div>
 
@@ -294,7 +298,7 @@
               alt="Tintes Naturales — Paloma Maseda"
               class="project-img"
               onerror="this.style.opacity=0"
-              data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg|img/proyectos/tintes/09.jpg|img/proyectos/tintes/10.jpg"
+              data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg"
             >
             <div class="project-overlay">
               <span class="project-overlay-text">VER GALERÍA</span>
@@ -304,13 +308,13 @@
 
         <div class="project-content-col">
           <div class="project-number" aria-hidden="true">03</div>
-          <h3 class="project-title">Tintes<br>Naturales</h3>
+          <h3 class="project-title" data-i18n-html="project.tintes.title">Tintes<br>Naturales</h3>
           <div class="project-tags">
-            <span class="tag">Pigmentos</span>
-            <span class="tag">Descartes Orgánicos</span>
-            <span class="tag">Proceso</span>
+            <span class="tag" data-i18n="project.tintes.tag1">Pigmentos</span>
+            <span class="tag" data-i18n="project.tintes.tag2">Descartes Orgánicos</span>
+            <span class="tag" data-i18n="project.tintes.tag3">Proceso</span>
           </div>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="project.tintes.desc">
             Extracción y aplicación de pigmentos naturales a partir de descartes orgánicos:
             remolacha, clorella, matcha, café, cebolla, zanahoria y otros. Cada material vegetal
             ofrece un rango tonal único que varía según mordiente y cocción, generando paletas
@@ -318,10 +322,10 @@
           </p>
           <button
             class="project-btn"
-            data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg|img/proyectos/tintes/09.jpg|img/proyectos/tintes/10.jpg"
+            data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg"
             aria-label="Ver galería de Tintes Naturales"
           >
-            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+            <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
         </div>
 
@@ -348,13 +352,13 @@
 
         <div class="project-content-col">
           <div class="project-number" aria-hidden="true">04</div>
-          <h3 class="project-title">La indumentaria<br>como segunda piel</h3>
+          <h3 class="project-title" data-i18n-html="project.segundaPiel.title">La indumentaria<br>como segunda piel</h3>
           <div class="project-tags">
-            <span class="tag">Celulosa Bacteriana</span>
-            <span class="tag">Tinte de Remolacha</span>
-            <span class="tag">Obra de Graduación</span>
+            <span class="tag" data-i18n="project.segundaPiel.tag1">Celulosa Bacteriana</span>
+            <span class="tag" data-i18n="project.segundaPiel.tag2">Tinte de Remolacha</span>
+            <span class="tag" data-i18n="project.segundaPiel.tag3">Obra de Graduación</span>
           </div>
-          <p class="project-desc">
+          <p class="project-desc" data-i18n="project.segundaPiel.desc">
             Obra de graduación. Celulosa bacteriana teñida con remolacha que explora las propiedades
             curativas del material y su similitud con la anatomía humana. La prenda funciona como
             una segunda piel orgánica: viva, frágil, translúcida. Un manifiesto sobre la relación
@@ -365,7 +369,7 @@
             data-gallery="img/proyectos/segunda-piel/cover.jpg|img/proyectos/segunda-piel/01.jpg|img/proyectos/segunda-piel/02.jpg|img/proyectos/segunda-piel/03.jpg|img/proyectos/segunda-piel/04.jpg|img/proyectos/segunda-piel/05.jpg"
             aria-label="Ver galería de La indumentaria como segunda piel"
           >
-            Ver galería <span class="btn-arrow" aria-hidden="true">→</span>
+            <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
         </div>
 
@@ -380,11 +384,11 @@
   <section id="contacto" class="contact">
     <div class="contact-inner">
       <div class="contact-copy">
-        <div class="section-label">03 — CONTACTO</div>
-        <h2 class="contact-heading">
+        <div class="section-label" data-i18n="contact.label">03 — CONTACTO</div>
+        <h2 class="contact-heading" data-i18n="contact.heading">
           Conversemos.
         </h2>
-        <p class="contact-intro">
+        <p class="contact-intro" data-i18n="contact.intro">
           Si querés escribir por una pieza, una investigación, una producción
           o una colaboración, este es el mejor lugar para empezar.
         </p>
@@ -392,16 +396,16 @@
 
       <div class="contact-links">
         <a href="mailto:palomaseda6@gmail.com" class="contact-link">
-          <span class="contact-link-kicker">Email</span>
+          <span class="contact-link-kicker" data-i18n="contact.emailLabel">Email</span>
           <span class="contact-link-value">palomaseda6@gmail.com</span>
-          <span class="contact-link-meta">Escribime directo</span>
+          <span class="contact-link-meta" data-i18n="contact.emailMeta">Escribime directo</span>
           <span class="contact-link-arrow" aria-hidden="true">↗</span>
         </a>
 
         <a href="https://instagram.com/biotextiless" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-kicker">Instagram</span>
           <span class="contact-link-value">@biotextiless</span>
-          <span class="contact-link-meta">Proceso, pruebas y proyectos</span>
+          <span class="contact-link-meta" data-i18n="contact.instagramMeta">Proceso, pruebas y proyectos</span>
           <span class="contact-link-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
@@ -414,7 +418,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <span class="footer-logo">PALOMA MASEDA</span>
-      <span class="footer-copy">© 2025 — Diseño Textil &amp; Biomateriales</span>
+      <span class="footer-copy" data-i18n="footer.copy">© 2025 — Diseño Textil &amp; Biomateriales</span>
     </div>
   </footer>
 
