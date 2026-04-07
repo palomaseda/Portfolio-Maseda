@@ -1,0 +1,179 @@
+{
+  "translations": {
+    "es": {
+      "about": {
+        "label": "01 — SOBRE MÍ",
+        "heading": "Diseñadora textil.<br>En busca de materiales<br>alternativos.",
+        "p1": "Mi formación comenzó en un colegio de pedagogía Waldorf, donde aprendí a observar el mundo desde la creatividad, la sensorialidad y el respeto profundo por los materiales nobles y los procesos naturales. Ese enfoque moldeó mi forma de venerar la naturaleza y mi preocupación por la contaminación del medioambiente.",
+        "p2": "Para graduarme de mis estudios secundarios en 2023, dediqué un año entero a investigar los biomateriales. La investigación tuvo dos fases: una teórica, materializada en el libro \"Biomateriales: una alternativa para la industria textil\", que incluye entrevistas a referentes del sector como Elia Gasparolo; y una práctica, con cursos junto a Laura Messing, Cinthya Nudel, Carolina Etchevers y Ludmila Ledesma.",
+        "p3": "También confeccioné una prenda realizada con biomateriales, no para darle un uso cotidiano, sino como objeto de concientización social acerca de la contaminación de la industria textil.",
+        "p4": "Actualmente soy estudiante de Diseño Textil en FADU, Facultad de Arquitectura, Diseño y Urbanismo de la Universidad de Buenos Aires, y también realicé cursos complementarios como \"Materiales del siglo XXI\", dictado por el INTI, y \"Diseño textil digital\", por Natalia Spitzer. Sigo investigando y produciendo biomateriales de forma independiente, con el objetivo de llevarlos a una escala industrial y aplicarlos en la indumentaria."
+      },
+      "hero": {
+        "subtitle": "DISEÑO TEXTIL · BIOMATERIALES"
+      },
+      "gallery": {
+        "label": "03 — GALERÍA",
+        "title": "Archivo visual<br>de procesos"
+      },
+      "contact": {
+        "label": "04 — CONTACTO",
+        "heading": "Conversemos.",
+        "intro": "Si querés escribir por una pieza, una investigación, una producción o una colaboración, este es el mejor lugar para empezar."
+      },
+      "footer": {
+        "copy": "© 2025 — Diseño Textil & Biomateriales"
+      },
+      "project": {
+        "celulosa": {
+          "title": "Celulosa Bacteriana",
+          "desc": "Producción de biomaterial a partir de celulosa bacteriana, el cual se obtiene al deshidratar el subproducto sólido del cultivo del SCOBY (symbiotic colony of bacteria and yeast) de la kombucha. El material tiene una consistencia gelatinosa en húmedo y un aspecto de piel flexible y maleable en seco. Este proceso de fermentación es completamente natural y no resulta contaminante en ninguna instancia. Además, es biodegradable y compostable.",
+          "tag1": "SCOBY",
+          "tag2": "bolso"
+        },
+        "cafe": {
+          "title": "Biocuero de Cafée",
+          "desc": "Biocuero obtenido a partir de la borra de café, uno de los descartes orgánicos más abundantes del entorno urbano. Es un material visualmente similar al cuero, flexible y con una textura porosa.",
+          "tag1": "gran formato",
+          "tag2": "indumentaria",
+          "tag3": "iluminación"
+        },
+        "tintes": {
+          "title": "Tintes Naturales",
+          "desc": "Extracción y aplicación de pigmentos y tintes naturales. Uno de los procesos más contaminantes de la industria textil es el teñido de las telas, contaminando millones de litros de agua potable. Los colores son un factor fundamental a la hora de vestirnos y diseñar. Es por esto que decidí indagar en los tintes naturales.",
+          "tag1": "remolacha",
+          "tag2": "hibiscus",
+          "tag3": "chlorella"
+        },
+        "segundaPiel": {
+          "title": "La indumentaria como segunda piel",
+          "desc": "En esta obra, exploro la similitud entre la celulosa bacteriana y la anatomía humana. Sus propiedades curativas y regenerativas de la piel. La prenda hace referencia a una segunda piel viva, nueva, frágil. Relacionándolo con la crisis medioambiental, una herida que tenemos que sanar.",
+          "tag1": "celulosa bacteriana",
+          "tag2": "biomórfica",
+          "tag3": "hibiscus",
+          "tag4": "remolacha"
+        }
+      }
+    },
+    "en": {
+      "about": {
+        "label": "01 — ABOUT",
+        "heading": "Textile designer.<br>In search of alternative<br>materials.",
+        "p1": "My education began at a Waldorf school, where I learned to observe the world through creativity, sensory awareness, and a deep respect for noble materials and natural processes. That approach shaped the way I honor nature and my concern about environmental contamination.",
+        "p2": "To graduate from secondary school in 2023, I devoted an entire year to researching biomaterials. The research had two phases: a theoretical one, materialized in the book \"Biomaterials: an alternative for the textile industry\", which includes interviews with sector references such as Elia Gasparolo; and a practical one, through courses with Laura Messing, Cinthya Nudel, Carolina Etchevers, and Ludmila Ledesma.",
+        "p3": "I also created a garment made with biomaterials, not for everyday use, but as an object of social awareness about the pollution generated by the textile industry.",
+        "p4": "I am currently studying Textile Design at FADU, the Faculty of Architecture, Design and Urbanism at the University of Buenos Aires, and I have also completed complementary courses such as \"Materials of the 21st Century\" at INTI and \"Digital Textile Design\" with Natalia Spitzer. I continue researching and producing biomaterials independently, with the goal of bringing them to an industrial scale and applying them to fashion."
+      },
+      "hero": {
+        "subtitle": "TEXTILE DESIGN · BIOMATERIALS"
+      },
+      "gallery": {
+        "label": "03 — GALLERY",
+        "title": "Visual archive<br>of processes"
+      },
+      "contact": {
+        "label": "04 — CONTACT",
+        "heading": "Let’s talk.",
+        "intro": "If you want to get in touch about a piece, research, production, or a collaboration, this is the best place to start."
+      },
+      "footer": {
+        "copy": "© 2025 — Textile Design & Biomaterials"
+      },
+      "project": {
+        "celulosa": {
+          "title": "Bacterial Cellulose",
+          "desc": "Biomaterial production based on bacterial cellulose, obtained by dehydrating the solid byproduct of the kombucha SCOBY culture (symbiotic colony of bacteria and yeast). The material has a gelatinous consistency when wet and a flexible, skin-like appearance when dry. This fermentation process is entirely natural and non-polluting at every stage. It is also biodegradable and compostable.",
+          "tag1": "SCOBY",
+          "tag2": "bag"
+        },
+        "cafe": {
+          "title": "Coffee Biomaterial",
+          "desc": "A biomaterial obtained from used coffee grounds, one of the most abundant organic residues in urban environments. It is visually similar to leather, flexible, and has a porous texture.",
+          "tag1": "large format",
+          "tag2": "fashion",
+          "tag3": "lighting"
+        },
+        "tintes": {
+          "title": "Natural Dyes",
+          "desc": "Extraction and application of natural pigments and dyes. One of the most polluting processes in the textile industry is fabric dyeing, contaminating millions of liters of drinking water. Color is a fundamental factor when it comes to dressing and designing, which is why I decided to explore natural dyes.",
+          "tag1": "beetroot",
+          "tag2": "hibiscus",
+          "tag3": "chlorella"
+        },
+        "segundaPiel": {
+          "title": "Garment as a Second Skin",
+          "desc": "In this piece, I explore the similarity between bacterial cellulose and human anatomy, as well as its healing and skin-regenerating properties. The garment refers to a living, new, fragile second skin, relating it to the environmental crisis: a wound that we need to heal.",
+          "tag1": "bacterial cellulose",
+          "tag2": "biomorphic",
+          "tag3": "hibiscus",
+          "tag4": "beetroot"
+        }
+      }
+    }
+  },
+  "projects": [
+    {
+      "slug": "celulosa",
+      "cover": "img/proyectos/celulosa/cover.jpg",
+      "gallery": [
+        "img/proyectos/celulosa/cover.jpg",
+        "img/proyectos/celulosa/01.jpg",
+        "img/proyectos/celulosa/02.jpg",
+        "img/proyectos/celulosa/03.jpg",
+        "img/proyectos/celulosa/04.jpg",
+        "img/proyectos/celulosa/05.jpg",
+        "img/proyectos/celulosa/06.jpg"
+      ]
+    },
+    {
+      "slug": "cafe",
+      "cover": "img/proyectos/cafe/cover.jpg",
+      "gallery": [
+        "img/proyectos/cafe/cover.jpg",
+        "img/proyectos/cafe/01.jpg",
+        "img/proyectos/cafe/02.jpg",
+        "img/proyectos/cafe/03.jpg",
+        "img/proyectos/cafe/04.jpg",
+        "img/proyectos/cafe/05.jpg",
+        "img/proyectos/cafe/06.jpg",
+        "img/proyectos/cafe/07.jpg"
+      ]
+    },
+    {
+      "slug": "tintes",
+      "cover": "img/proyectos/tintes/cover.jpg",
+      "gallery": [
+        "img/proyectos/tintes/cover.jpg",
+        "img/proyectos/tintes/01.jpg",
+        "img/proyectos/tintes/02.jpg",
+        "img/proyectos/tintes/03.jpg",
+        "img/proyectos/tintes/04.jpg",
+        "img/proyectos/tintes/05.jpg",
+        "img/proyectos/tintes/06.jpg",
+        "img/proyectos/tintes/07.jpg",
+        "img/proyectos/tintes/08.jpg",
+        "img/proyectos/tintes/09.jpg",
+        "img/proyectos/tintes/10.jpg"
+      ]
+    },
+    {
+      "slug": "segunda-piel",
+      "cover": "img/proyectos/segunda-piel/cover.jpg",
+      "gallery": [
+        "img/proyectos/segunda-piel/cover.jpg",
+        "img/proyectos/segunda-piel/01.jpg",
+        "img/proyectos/segunda-piel/02.jpg",
+        "img/proyectos/segunda-piel/03.jpg",
+        "img/proyectos/segunda-piel/04.jpg",
+        "img/proyectos/segunda-piel/05.jpg"
+      ]
+    }
+  ],
+  "about": {
+    "image": "img/sobre-mi/paloma.jpg",
+    "caption_es": "Buenos Aires, Argentina",
+    "caption_en": "Buenos Aires, Argentina",
+    "body_es": "Mi formación comenzó en un colegio de pedagogía Waldorf, donde aprendí a observar el mundo desde la creatividad, la sensorialidad y el respeto profundo por los materiales nobles y los procesos naturales. Ese enfoque moldeó mi forma de venerar la naturaleza y mi preocupación por la contaminación del medioambiente.\n\nPara graduarme de mis estudios secundarios en 2023, dediqué un año entero a investigar los biomateriales. La investigación tuvo dos fases: una teórica, materializada en el libro \"Biomateriales: una alternativa para la industria textil\", que incluye entrevistas a referentes del sector como Elia Gasparolo; y una práctica, con cursos junto a Laura Messing, Cinthya Nudel, Carolina Etchevers y Ludmila Ledesma.\n\nTambién confeccioné una prenda realizada con biomateriales, no para darle un uso cotidiano, sino como objeto de concientización social acerca de la contaminación de la industria textil.\n\nActualmente soy estudiante de Diseño Textil en FADU, Facultad de Arquitectura, Diseño y Urbanismo de la Universidad de Buenos Aires, y también realicé cursos complementarios como \"Materiales del siglo XXI\", dictado por el INTI, y \"Diseño textil digital\", por Natalia Spitzer. Sigo investigando y produciendo biomateriales de forma independiente, con el objetivo de llevarlos a una escala industrial y aplicarlos en la indumentaria.",
+    "body_en": "My education began at a Waldorf school, where I learned to observe the world through creativity, sensory awareness, and a deep respect for noble materials and natural processes. That approach shaped the way I honor nature and my concern about environmental contamination.\n\nTo graduate from secondary school in 2023, I devoted an entire year to researching biomaterials. The research had two phases: a theoretical one, materialized in the book \"Biomaterials: an alternative for the textile industry\", which includes interviews with sector references such as Elia Gasparolo; and a practical one, through courses with Laura Messing, Cinthya Nudel, Carolina Etchevers, and Ludmila Ledesma.\n\nI also created a garment made with biomaterials, not for everyday use, but as an object of social awareness about the pollution generated by the textile industry.\n\nI am currently studying Textile Design at FADU, the Faculty of Architecture, Design and Urbanism at the University of Buenos Aires, and I have also completed complementary courses such as \"Materials of the 21st Century\" at INTI and \"Digital Textile Design\" with Natalia Spitzer. I continue researching and producing biomaterials independently, with the goal of bringing them to an industrial scale and applying them to fashion."
+  }
+}

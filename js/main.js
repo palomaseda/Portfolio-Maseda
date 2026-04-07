@@ -8,14 +8,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ── Iniciar todo cuando el DOM esté listo ───────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  initLanguage();
-  initNavbar();
-  initMobileMenu();
-  initHero();
-  initGallery();
-  initScrollReveals();
-  initParallax();
-  initLightbox();
+  (async () => {
+    await loadContent();
+    initLanguage();
+    initNavbar();
+    initMobileMenu();
+    initHero();
+    initGallery();
+    initScrollReveals();
+    initParallax();
+    initLightbox();
+  })();
 });
 
 const translations = {
@@ -174,6 +177,166 @@ const translations = {
     },
   },
 };
+
+function mergeDeep(target, source) {
+  Object.keys(source).forEach((key) => {
+    const sourceValue = source[key];
+    if (
+      sourceValue &&
+      typeof sourceValue === 'object' &&
+      !Array.isArray(sourceValue) &&
+      target[key] &&
+      typeof target[key] === 'object' &&
+      !Array.isArray(target[key])
+    ) {
+      mergeDeep(target[key], sourceValue);
+    } else {
+      target[key] = sourceValue;
+    }
+  });
+
+  return target;
+}
+
+function textToHtml(text = '') {
+  return String(text)
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join('<br>');
+}
+
+function stripHtml(html = '') {
+  return String(html).replace(/<[^>]+>/g, ' ');
+}
+
+function applyLineBreakTemplate(templateHtml = '', text = '') {
+  const rawText = String(text).trim();
+  if (!rawText) return rawText;
+
+  if (/<br\s*\/?>/i.test(rawText) || rawText.includes('\n')) {
+    return textToHtml(rawText);
+  }
+
+  const templateLines = String(templateHtml)
+    .split(/<br\s*\/?>/i)
+    .map((line) => stripHtml(line).trim())
+    .filter(Boolean);
+
+  if (templateLines.length <= 1) return rawText;
+
+  const words = rawText.split(/\s+/).filter(Boolean);
+  const templateWordCounts = templateLines.map((line) => line.split(/\s+/).filter(Boolean).length);
+  const totalTemplateWords = templateWordCounts.reduce((sum, count) => sum + count, 0);
+
+  if (words.length !== totalTemplateWords) return rawText;
+
+  const rebuiltLines = [];
+  let cursor = 0;
+
+  templateWordCounts.forEach((count) => {
+    rebuiltLines.push(words.slice(cursor, cursor + count).join(' '));
+    cursor += count;
+  });
+
+  return rebuiltLines.join('<br>');
+}
+
+function bodyToParagraphs(text = '') {
+  return String(text)
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+}
+
+function normalizeGalleryList(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return String(value)
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+async function loadContent() {
+  try {
+    const response = await fetch('data/content.json');
+    if (!response.ok) return;
+
+    const content = await response.json();
+
+    if (content.translations) {
+      normalizeFetchedTranslations(content.translations);
+      mergeDeep(translations, content.translations);
+    }
+
+    if (content.about) {
+      applyAboutContent(content.about);
+    }
+
+    if (Array.isArray(content.projects)) {
+      applyProjectsContent(content.projects);
+    }
+  } catch (error) {
+    console.warn('No se pudo cargar content.json', error);
+  }
+}
+
+function normalizeFetchedTranslations(contentTranslations) {
+  ['es', 'en'].forEach((lang) => {
+    const fetchedProjects = contentTranslations?.[lang]?.project;
+    const baseProjects = translations?.[lang]?.project;
+    if (!fetchedProjects || !baseProjects) return;
+
+    Object.keys(fetchedProjects).forEach((key) => {
+      const fetchedTitle = fetchedProjects[key]?.title;
+      const baseTitle = baseProjects[key]?.title;
+      if (!fetchedTitle || !baseTitle) return;
+
+      fetchedProjects[key].title = applyLineBreakTemplate(baseTitle, fetchedTitle);
+    });
+  });
+}
+
+function applyAboutContent(about) {
+  const image = document.querySelector('.about-img');
+  const caption = document.querySelector('.about-caption');
+  const body = document.querySelector('.about-body');
+
+  if (image && about.image) {
+    image.src = about.image;
+  }
+
+  if (caption && about.caption_es) {
+    caption.textContent = about.caption_es;
+  }
+
+  if (body && about.body_es) {
+    const paragraphs = bodyToParagraphs(about.body_es);
+    body.innerHTML = paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
+  }
+}
+
+function applyProjectsContent(projects) {
+  projects.forEach((project) => {
+    const card = document.querySelector(`.project-item[data-slug="${project.slug}"]`);
+    if (!card) return;
+
+    const image = card.querySelector('.project-img');
+    const button = card.querySelector('.project-btn');
+
+    if (image && project.cover) {
+      image.src = project.cover;
+    }
+
+    const gallery = normalizeGalleryList(project.gallery);
+    if (gallery.length) {
+      const galleryString = gallery.join('|');
+      if (image) image.dataset.gallery = galleryString;
+      if (button) button.dataset.gallery = galleryString;
+    }
+  });
+}
 
 function getTranslationValue(lang, key) {
   return key.split('.').reduce((acc, part) => acc && acc[part], translations[lang]);
