@@ -266,10 +266,17 @@ function getThumbnailPath(src = '') {
   return value.replace(/(\.[a-z0-9]+)$/i, '-thumb$1');
 }
 
-function setOptimizedImage(image, fullSrc) {
+function getGalleryPreviewPath(src = '') {
+  const value = String(src).trim();
+  if (!value) return value;
+  if (/^https?:\/\//i.test(value)) return value;
+  return value.replace(/(\.[a-z0-9]+)$/i, '-gallery$1');
+}
+
+function setOptimizedImage(image, fullSrc, mode = 'thumb') {
   if (!image || !fullSrc) return;
   image.dataset.fullsrc = fullSrc;
-  image.src = getThumbnailPath(fullSrc);
+  image.src = mode === 'gallery' ? getGalleryPreviewPath(fullSrc) : getThumbnailPath(fullSrc);
 }
 
 function initDeferredImages() {
@@ -346,7 +353,7 @@ function applyAboutContent(about) {
   const body = document.querySelector('.about-body');
 
   if (image && about.image) {
-    setOptimizedImage(image, about.image);
+    image.src = about.image;
   }
 
   if (caption && about.caption_es) {
@@ -368,7 +375,7 @@ function applyProjectsContent(projects) {
     const button = card.querySelector('.project-btn');
 
     if (image && project.cover) {
-      setOptimizedImage(image, project.cover);
+      image.src = project.cover;
     }
 
     const gallery = normalizeGalleryList(project.gallery);
@@ -572,7 +579,7 @@ function initGallery() {
 
   grid.innerHTML = mixedGallery.map(({ src, alt }) => `
     <figure class="gallery-item">
-      <img data-src="${src}" alt="${alt}" loading="lazy" decoding="async" fetchpriority="low" onerror="this.closest('figure')?.remove()">
+      <img data-src="${getGalleryPreviewPath(src)}" data-fullsrc="${src}" alt="${alt}" loading="lazy" decoding="async" fetchpriority="low" onerror="if(this.dataset.fullsrc && !this.dataset.fallbackLoaded){this.dataset.fallbackLoaded='true';this.src=this.dataset.fullsrc;}else{this.closest('figure')?.remove()}">
     </figure>
   `).join('');
 }
