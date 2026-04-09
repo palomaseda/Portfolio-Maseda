@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+  <url>
+    <loc>https://palomaseda.github.io/Portfolio-Maseda/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://palomaseda.github.io/Portfolio-Maseda/img/sobre-mi/paloma.jpg</image:loc>
+      <image:title>Paloma Maseda</image:title>
+      <image:caption>Retrato de Paloma Maseda en Buenos Aires.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://palomaseda.github.io/Portfolio-Maseda/img/proyectos/celulosa/cover.jpg</image:loc>
+      <image:title>Celulosa Bacteriana</image:title>
+      <image:caption>Proyecto de biomaterial a partir de celulosa bacteriana.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://palomaseda.github.io/Portfolio-Maseda/img/proyectos/cafe/cover.jpg</image:loc>
+      <image:title>Biocuero de Café</image:title>
+      <image:caption>Biomaterial desarrollado a partir de borra de café.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://palomaseda.github.io/Portfolio-Maseda/img/proyectos/tintes/cover.jpg</image:loc>
+      <image:title>Tintes Naturales</image:title>
+      <image:caption>Extracción y aplicación de pigmentos y tintes naturales.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://palomaseda.github.io/Portfolio-Maseda/img/proyectos/segunda-piel/cover.jpg</image:loc>
+      <image:title>La indumentaria como segunda piel</image:title>
+      <image:caption>Obra sobre celulosa bacteriana, anatomía humana y crisis medioambiental.</image:caption>
+    </image:image>
+  </url>
+</urlset>

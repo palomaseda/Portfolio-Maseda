@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://palomaseda.github.io/Portfolio-Maseda/sitemap.xml
