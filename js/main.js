@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initHero();
     initGallery();
+    initDeferredImages();
     initScrollReveals();
     initParallax();
     initLightbox();
@@ -258,6 +259,47 @@ function normalizeGalleryList(value) {
     .filter(Boolean);
 }
 
+function getThumbnailPath(src = '') {
+  const value = String(src).trim();
+  if (!value) return value;
+  if (/^https?:\/\//i.test(value)) return value;
+  return value.replace(/(\.[a-z0-9]+)$/i, '-thumb$1');
+}
+
+function setOptimizedImage(image, fullSrc) {
+  if (!image || !fullSrc) return;
+  image.dataset.fullsrc = fullSrc;
+  image.src = getThumbnailPath(fullSrc);
+}
+
+function initDeferredImages() {
+  const lazyImages = Array.from(document.querySelectorAll('img[data-src]'));
+  if (!lazyImages.length) return;
+
+  const hydrateImage = (img) => {
+    if (!img || img.dataset.loaded === 'true') return;
+    img.src = img.dataset.src;
+    img.dataset.loaded = 'true';
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    lazyImages.forEach(hydrateImage);
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      hydrateImage(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: '300px 0px',
+  });
+
+  lazyImages.forEach((img) => observer.observe(img));
+}
+
 async function loadContent() {
   try {
     const response = await fetch('data/content.json');
@@ -304,7 +346,7 @@ function applyAboutContent(about) {
   const body = document.querySelector('.about-body');
 
   if (image && about.image) {
-    image.src = about.image;
+    setOptimizedImage(image, about.image);
   }
 
   if (caption && about.caption_es) {
@@ -326,7 +368,7 @@ function applyProjectsContent(projects) {
     const button = card.querySelector('.project-btn');
 
     if (image && project.cover) {
-      image.src = project.cover;
+      setOptimizedImage(image, project.cover);
     }
 
     const gallery = normalizeGalleryList(project.gallery);
@@ -530,7 +572,7 @@ function initGallery() {
 
   grid.innerHTML = mixedGallery.map(({ src, alt }) => `
     <figure class="gallery-item">
-      <img src="${src}" alt="${alt}" loading="lazy" onerror="this.closest('figure')?.remove()">
+      <img data-src="${src}" alt="${alt}" loading="lazy" decoding="async" fetchpriority="low" onerror="this.closest('figure')?.remove()">
     </figure>
   `).join('');
 }
