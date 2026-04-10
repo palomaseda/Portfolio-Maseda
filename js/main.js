@@ -577,15 +577,19 @@ function initGallery() {
     });
   }
 
-  // Cola de cierre: duplicamos unas pocas imágenes para que el fade inferior
-  // tenga contenido detrás y el remate no se vea accidental.
-  const tailFillers = projectGalleries
-    .map((items, index) => items[Math.min(index + 1, items.length - 1)] || items[0])
-    .filter(Boolean)
-    .map((item, index) => ({
-      ...item,
-      alt: `${item.alt} tail ${index + 1}`,
-    }));
+  // Cola de cierre: duplicamos más imágenes para que el fade inferior
+  // tape fotos reales y no un hueco vacío.
+  const tailFillers = [];
+  for (let round = 0; round < 2; round += 1) {
+    projectGalleries.forEach((items, projectIndex) => {
+      if (!items.length) return;
+      const item = items[(projectIndex + round * 2) % items.length];
+      tailFillers.push({
+        ...item,
+        alt: `${item.alt} tail ${round + 1}-${projectIndex + 1}`,
+      });
+    });
+  }
 
   const galleryForRender = mixedGallery.concat(tailFillers);
 
