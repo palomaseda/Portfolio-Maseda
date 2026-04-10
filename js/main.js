@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const translations = {
   es: {
     meta: {
-      title: 'Paloma Maseda — Diseño Textil',
-      description: 'Paloma Maseda — Diseñadora textil enfocada en biomateriales, investigación y producción independiente en Buenos Aires.',
+      title: 'Paloma Maseda — Biomateriales y Diseño Textil',
+      description: 'Portfolio de Paloma Maseda: biomateriales, celulosa bacteriana, tintes naturales y diseño textil experimental desde Buenos Aires.',
       ogLocale: 'es_AR',
     },
     nav: {
@@ -102,8 +102,8 @@ const translations = {
   },
   en: {
     meta: {
-      title: 'Paloma Maseda — Textile Design',
-      description: 'Paloma Maseda — Textile designer focused on biomaterials, research and independent production in Buenos Aires.',
+      title: 'Paloma Maseda — Biomaterials and Textile Design',
+      description: 'Portfolio of Paloma Maseda: biomaterials, bacterial cellulose, natural dyes and experimental textile design from Buenos Aires.',
       ogLocale: 'en_US',
     },
     nav: {
