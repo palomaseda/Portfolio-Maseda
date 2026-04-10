@@ -577,7 +577,19 @@ function initGallery() {
     });
   }
 
-  grid.innerHTML = mixedGallery.map(({ src, alt }) => `
+  // Cola de cierre: duplicamos unas pocas imágenes para que el fade inferior
+  // tenga contenido detrás y el remate no se vea accidental.
+  const tailFillers = projectGalleries
+    .map((items, index) => items[Math.min(index + 1, items.length - 1)] || items[0])
+    .filter(Boolean)
+    .map((item, index) => ({
+      ...item,
+      alt: `${item.alt} tail ${index + 1}`,
+    }));
+
+  const galleryForRender = mixedGallery.concat(tailFillers);
+
+  grid.innerHTML = galleryForRender.map(({ src, alt }) => `
     <figure class="gallery-item">
       <img data-src="${getGalleryPreviewPath(src)}" data-fullsrc="${src}" alt="${alt}" loading="lazy" decoding="async" fetchpriority="low" onerror="if(this.dataset.fullsrc && !this.dataset.fallbackLoaded){this.dataset.fallbackLoaded='true';this.src=this.dataset.fullsrc;}else{this.closest('figure')?.remove()}">
     </figure>
