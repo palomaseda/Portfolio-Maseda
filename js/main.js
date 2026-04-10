@@ -806,11 +806,23 @@ function initLightbox() {
     return attr.split('|').map(s => s.trim()).filter(Boolean);
   }
 
+  const preloadedImages = new Set();
+
+  function preloadGalleryImages(galleryImages = [], limit = 2) {
+    galleryImages.slice(0, limit).forEach((src) => {
+      if (!src || preloadedImages.has(src)) return;
+      const preload = new Image();
+      preload.src = src;
+      preloadedImages.add(src);
+    });
+  }
+
   /* ── Abrir lightbox ── */
   function open(galleryImages, startIndex = 0) {
     if (!galleryImages.length) return;
     images  = galleryImages;
     current = startIndex;
+    preloadGalleryImages(galleryImages, 2);
     show(current);
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -832,6 +844,7 @@ function initLightbox() {
       img.alt = `Imagen ${index + 1} de ${images.length}`;
       img.classList.remove('fading');
       updateCounter();
+      preloadGalleryImages([images[(index + 1) % images.length]], 1);
     }, 180);
   }
 
@@ -854,6 +867,10 @@ function initLightbox() {
 
   /* ── Eventos: botones de proyectos ── */
   document.querySelectorAll('.project-btn').forEach(btn => {
+    const primeButtonGallery = () => preloadGalleryImages(parseGallery(btn.dataset.gallery), 2);
+    btn.addEventListener('pointerenter', primeButtonGallery, { passive: true });
+    btn.addEventListener('focus', primeButtonGallery, { passive: true });
+    btn.addEventListener('touchstart', primeButtonGallery, { passive: true });
     btn.addEventListener('click', () => {
       const gallery = parseGallery(btn.dataset.gallery);
       open(gallery, 0);
@@ -862,6 +879,13 @@ function initLightbox() {
 
   /* ── Eventos: click en imagen de proyecto ── */
   document.querySelectorAll('.project-image-wrap').forEach(wrap => {
+    const primeWrapGallery = () => {
+      const projectImg = wrap.querySelector('.project-img');
+      if (!projectImg) return;
+      preloadGalleryImages(parseGallery(projectImg.dataset.gallery), 2);
+    };
+    wrap.addEventListener('pointerenter', primeWrapGallery, { passive: true });
+    wrap.addEventListener('touchstart', primeWrapGallery, { passive: true });
     wrap.addEventListener('click', () => {
       const projectImg = wrap.querySelector('.project-img');
       if (!projectImg) return;
