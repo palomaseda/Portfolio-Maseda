@@ -4,7 +4,7 @@
     ?.getAttribute('content')
     ?.trim();
 
-  if (!measurementId || measurementId === 'G-XXXXXXXXXX') {
+  if (!measurementId || typeof window.gtag !== 'function') {
     window.palomaAnalytics = {
       enabled: false,
       track: () => {},
@@ -12,26 +12,8 @@
     return;
   }
 
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
-  document.head.appendChild(script);
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    window.dataLayer.push(arguments);
-  }
-
-  window.gtag = gtag;
-
-  gtag('js', new Date());
-  gtag('config', measurementId, {
-    send_page_view: false,
-    anonymize_ip: true,
-  });
-
   function track(eventName, params = {}) {
-    gtag('event', eventName, params);
+    window.gtag('event', eventName, params);
   }
 
   function currentLang() {
@@ -150,15 +132,21 @@
     window.addEventListener('hashchange', trackPageView);
   }
 
+  function init() {
+    trackPageView();
+    initSectionTracking();
+    initClickTracking();
+    initHistoryTracking();
+  }
+
   window.palomaAnalytics = {
     enabled: true,
     track,
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    trackPageView();
-    initSectionTracking();
-    initClickTracking();
-    initHistoryTracking();
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
 })();
