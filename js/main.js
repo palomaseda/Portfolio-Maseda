@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveals();
     initParallax();
     initLightbox();
+    initNewsletter();
   })();
 });
 
@@ -96,6 +97,16 @@ const translations = {
       emailMeta: 'Escribime directo',
       instagramMeta: 'Proceso, pruebas y proyectos',
     },
+    newsletter: {
+      kicker: 'Newsletter',
+      title: 'Sumate al proceso',
+      meta: 'Novedades, investigaciones y nuevos biomateriales, directo a tu correo. Sin spam.',
+      placeholder: 'tu@email.com',
+      button: 'Suscribirme',
+      sending: 'Enviando…',
+      success: '¡Listo! Revisá tu correo para confirmar la suscripción.',
+      error: 'No se pudo suscribir. Abrimos la página en otra pestaña.',
+    },
     footer: {
       copy: '© 2025 — Diseño Textil & Biomateriales',
     },
@@ -172,6 +183,16 @@ const translations = {
       emailLabel: 'Email',
       emailMeta: 'Write to me directly',
       instagramMeta: 'Process, tests, and projects',
+    },
+    newsletter: {
+      kicker: 'Newsletter',
+      title: 'Join the process',
+      meta: 'Updates, research and new biomaterials, straight to your inbox. No spam.',
+      placeholder: 'you@email.com',
+      button: 'Subscribe',
+      sending: 'Sending…',
+      success: 'Done! Check your inbox to confirm your subscription.',
+      error: 'Could not subscribe. We opened the page in a new tab.',
     },
     footer: {
       copy: '© 2025 — Textile Design & Biomaterials',
@@ -404,6 +425,11 @@ function applyLanguage(lang) {
   document.querySelectorAll('[data-i18n-html]').forEach((el) => {
     const value = getTranslationValue(lang, el.dataset.i18nHtml);
     if (typeof value === 'string') el.innerHTML = value;
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+    const value = getTranslationValue(lang, el.dataset.i18nPlaceholder);
+    if (typeof value === 'string') el.placeholder = value;
   });
 
   document.title = dict.meta.title;
@@ -948,4 +974,64 @@ function initLightbox() {
     if (Math.abs(delta) < 50) return; // Ignorar taps
     delta < 0 ? next() : prev();
   }, { passive: true });
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   7. NEWSLETTER — suscripción a Substack sin salir del sitio
+   ──────────────────────────────────────────────────────────────
+   - Postea el email al endpoint de Substack (mode no-cors).
+   - Muestra un mensaje de estado in-situ en el idioma activo.
+   - Si el fetch falla (red), cae al submit normal en pestaña nueva.
+   ══════════════════════════════════════════════════════════════ */
+function initNewsletter() {
+  const form = document.getElementById('newsletterForm');
+  if (!form) return;
+
+  const status = document.getElementById('newsletterStatus');
+  const input  = form.querySelector('.newsletter-input');
+  const button = form.querySelector('.newsletter-btn');
+
+  const t = (key) => {
+    const lang = document.documentElement.lang === 'en' ? 'en' : 'es';
+    return getTranslationValue(lang, key) || getTranslationValue('es', key) || '';
+  };
+
+  const setStatus = (messageKey, state) => {
+    if (!status) return;
+    status.textContent = t(messageKey);
+    status.className = `newsletter-status is-${state}`;
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = (input.value || '').trim();
+    if (!email) return;
+
+    button.disabled = true;
+    setStatus('newsletter.sending', 'pending');
+
+    const body = new URLSearchParams({ email, first_url: location.href });
+
+    fetch(form.action, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    })
+      .then(() => {
+        setStatus('newsletter.success', 'success');
+        form.reset();
+      })
+      .catch(() => {
+        // Fallback: abrir la página de suscripción de Substack en otra pestaña
+        setStatus('newsletter.error', 'error');
+        const base = form.action.replace(/\/api\/v1\/free$/, '');
+        window.open(`${base}/subscribe?email=${encodeURIComponent(email)}`, '_blank', 'noopener');
+      })
+      .finally(() => {
+        button.disabled = false;
+      });
+  });
 }
