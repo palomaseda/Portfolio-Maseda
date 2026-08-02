@@ -1,0 +1,224 @@
+/* ══════════════════════════════════════════════════════════════
+   PALOMA MASEDA — Portfolio
+   newsletter.css — Archivo de ediciones
+   Depende de style.css (variables, navbar, footer, base).
+   ══════════════════════════════════════════════════════════════ */
+
+.news {
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + clamp(3rem, 8vw, 7rem)) 0 var(--sp-16);
+  background: linear-gradient(180deg, rgba(250, 247, 242, 0.65) 0%, rgba(243, 237, 227, 0.95) 100%);
+}
+
+.news-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+
+
+/* ── Encabezado del archivo ─────────────────────────────────── */
+.news-header {
+  max-width: 46rem;
+  margin-bottom: clamp(3rem, 7vw, 5.5rem);
+}
+
+.news-header .section-label {
+  display: block;
+  margin-bottom: var(--sp-4);
+}
+
+.news-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--sp-3);
+}
+
+.news-title em {
+  font-style: italic;
+  color: var(--c-accent-light);
+}
+
+.news-intro {
+  max-width: 30rem;
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--c-text-muted);
+}
+
+
+/* ── Grilla de ediciones ────────────────────────────────────── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 252, 247, 0.82);
+  border: 1px solid rgba(221, 211, 194, 0.9);
+  border-radius: 1.1rem;
+  overflow: hidden;
+  transition: transform var(--t-medium), border-color var(--t-fast), background var(--t-fast);
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(139, 74, 43, 0.28);
+  background: rgba(255, 252, 247, 0.96);
+}
+
+.news-card-thumb {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--c-surface-2);
+}
+
+.news-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform var(--t-slow);
+}
+
+.news-card:hover .news-card-thumb img {
+  transform: scale(1.03);
+}
+
+.news-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 1.35rem 1.5rem;
+}
+
+.news-card-date {
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.news-card-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--c-text);
+  transition: color var(--t-fast);
+}
+
+.news-card:hover .news-card-title {
+  color: var(--c-accent);
+}
+
+
+/* ── Estado vacío ───────────────────────────────────────────── */
+.news-empty {
+  max-width: 30rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--c-text-muted);
+  padding: var(--sp-6) 0;
+  border-top: 1px solid var(--c-border);
+}
+
+
+/* ── Edición individual ─────────────────────────────────────── */
+.news-back {
+  display: inline-block;
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  transition: color var(--t-fast);
+}
+
+.news-back:hover { color: var(--c-accent); }
+
+.news-edition-header {
+  max-width: 46rem;
+  margin-bottom: clamp(2.2rem, 5vw, 3.5rem);
+}
+
+.news-edition-date {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  margin-bottom: var(--sp-2);
+}
+
+.news-edition-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+
+.news-figure {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.news-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(221, 211, 194, 0.9);
+  border-radius: 1.1rem;
+  background: var(--c-surface);
+}
+
+
+/* ── Navegación entre ediciones ─────────────────────────────── */
+.news-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  max-width: 48rem;
+  margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--c-border);
+}
+
+.news-pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  max-width: 45%;
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  transition: color var(--t-fast);
+}
+
+.news-pager a:last-child { text-align: right; }
+
+.news-pager a:hover { color: var(--c-accent); }
+
+.news-pager-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--c-text);
+}
+
+
+@media (max-width: 620px) {
+  .news-pager { flex-direction: column; }
+  .news-pager a,
+  .news-pager a:last-child { max-width: none; text-align: left; }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Archivo de ediciones de la newsletter de Paloma Maseda: biomateriales, diseño textil e investigación desde Buenos Aires.">
+  <meta name="author" content="Paloma Maseda">
+  <meta name="google-analytics-id" content="G-C15YMDL1EZ">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#faf7f2">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://palomaseda.github.io/Portfolio-Maseda/newsletter.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://palomaseda.github.io/Portfolio-Maseda/newsletter.html">
+  <meta property="og:site_name" content="Paloma Maseda">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Newsletter — Paloma Maseda">
+  <meta property="og:description" content="Archivo de ediciones: biomateriales, diseño textil e investigación desde Buenos Aires.">
+  <meta property="og:image" content="https://palomaseda.github.io/Portfolio-Maseda/img/proyectos/celulosa/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Newsletter — Paloma Maseda">
+  <meta name="twitter:description" content="Archivo de ediciones: biomateriales, diseño textil e investigación desde Buenos Aires.">
+  <title>Newsletter — Paloma Maseda</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C15YMDL1EZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C15YMDL1EZ', {
+      send_page_view: false,
+      anonymize_ip: true
+    });
+  </script>
+
+  <!-- Google Fonts: Cormorant Garamond (títulos) + Inter (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/newsletter.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR FIJA
+  ============================================================ -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">PM</a>
+
+      <div class="nav-links">
+        <a href="index.html#sobre-mi"  class="nav-link" data-i18n="nav.about">Sobre mí</a>
+        <a href="index.html#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
+        <a href="index.html#galeria" class="nav-link" data-i18n="nav.gallery">Galería</a>
+        <a href="index.html#contacto"  class="nav-link" data-i18n="nav.contact">Contacto</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MENÚ MOBILE — OVERLAY FULLSCREEN
+  ============================================================ -->
+  <div class="menu-overlay" id="menuOverlay" role="dialog" aria-label="Menú de navegación">
+    <nav class="menu-overlay-links">
+      <a href="index.html#sobre-mi"  class="overlay-link" data-i18n="nav.about">Sobre mí</a>
+      <a href="index.html#proyectos" class="overlay-link" data-i18n="nav.projects">Proyectos</a>
+      <a href="index.html#galeria" class="overlay-link" data-i18n="nav.gallery">Galería</a>
+      <a href="index.html#contacto"  class="overlay-link" data-i18n="nav.contact">Contacto</a>
+    </nav>
+    <button class="lang-toggle lang-toggle--overlay" id="langToggleOverlay" type="button" aria-label="Switch language">EN</button>
+    <div class="menu-overlay-footer">Buenos Aires · 2025</div>
+  </div>
+
+  <!-- ============================================================
+       CONTENIDO
+  ============================================================ -->
+  <main class="news">
+    <div class="news-inner">
+
+      <!-- ── Archivo: listado de todas las ediciones ── -->
+      <section class="news-archive" id="newsArchive" hidden>
+        <header class="news-header">
+          <div class="section-label" data-i18n="news.label">05 — NEWSLETTER</div>
+          <h1 class="news-title" data-i18n-html="news.title">Ediciones<br><em>anteriores</em></h1>
+          <p class="news-intro" data-i18n="news.intro">
+            Cada entrega recopila procesos, pruebas y hallazgos del taller.
+            Acá quedan todas, para leerlas cuando quieras.
+          </p>
+        </header>
+
+        <div class="news-grid" id="newsGrid"></div>
+
+        <p class="news-empty" id="newsEmpty" hidden data-i18n="news.empty">
+          Todavía no hay ediciones publicadas. Muy pronto, la primera.
+        </p>
+      </section>
+
+      <!-- ── Edición individual ── -->
+      <article class="news-edition" id="newsEdition" hidden>
+        <a class="news-back" href="newsletter.html" data-i18n="news.back">← Todas las ediciones</a>
+
+        <header class="news-edition-header">
+          <time class="news-edition-date" id="editionDate"></time>
+          <h1 class="news-edition-title" id="editionTitle"></h1>
+        </header>
+
+        <figure class="news-figure">
+          <img id="editionImage" src="" alt="" decoding="async">
+        </figure>
+
+        <nav class="news-pager" id="newsPager"></nav>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">PALOMA MASEDA</span>
+      <span class="footer-copy" data-i18n="footer.copy">© 2025 — Diseño Textil &amp; Biomateriales</span>
+    </div>
+  </footer>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/newsletter.js"></script>
+
+</body>
+</html>

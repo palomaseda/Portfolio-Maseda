@@ -100,6 +100,7 @@ const translations = {
       kicker: 'Newsletter',
       title: 'Sumate al proceso',
       meta: 'Novedades, investigaciones y nuevos biomateriales, directo a tu correo. Sin spam.',
+      archive: 'Ver ediciones anteriores ↗',
     },
     footer: {
       copy: '© 2025 — Diseño Textil & Biomateriales',
@@ -182,6 +183,7 @@ const translations = {
       kicker: 'Newsletter',
       title: 'Join the process',
       meta: 'Updates, research and new biomaterials, straight to your inbox. No spam.',
+      archive: 'Read past editions ↗',
     },
     footer: {
       copy: '© 2025 — Textile Design & Biomaterials',
