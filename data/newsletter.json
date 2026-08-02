@@ -1,3 +1,27 @@
 {
-  "editions": []
+  "editions": [
+    {
+      "slug": "2026-08-06-primera-edicion",
+      "file": "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p01.jpg",
+      "pages": [
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p01.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p02.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p03.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p04.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p05.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p06.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p07.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p08.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p09.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p10.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p11.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p12.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p13.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p14.jpg",
+        "newsletter/rendered/2026-8-6__primera-edicion.a2d7767416.p15.jpg"
+      ],
+      "title": "primera edicion",
+      "date": "2026-08-06"
+    }
+  ]
 }
