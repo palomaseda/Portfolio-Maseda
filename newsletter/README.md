@@ -1,7 +1,12 @@
 # Ediciones de la newsletter
 
-Cada edición es **una imagen** (la que exportás desde Canva) subida a esta carpeta.
+Cada edición es **un archivo** (el que exportás desde Canva) subido a esta carpeta.
 El sitio la publica sola: no hay que tocar código.
+
+Sirve tanto **PDF** como **PNG / JPG**. Si subís un PDF se convierte a imagen
+automáticamente, así que descargá de Canva lo que te resulte más cómodo.
+
+> Si el PDF tiene varias páginas, se publica la primera.
 
 ## Cómo nombrar el archivo
 
@@ -33,5 +38,13 @@ En un par de minutos aparece en https://palomaseda.github.io/Portfolio-Maseda/ne
 
 ## Recomendación de formato
 
-Diseñá en Canva en **formato vertical**, 1080 px de ancho y el alto que necesites.
-Así se ve bien tanto en computadora como en celular.
+Diseñá en Canva en **formato vertical** (A4 o 1080 px de ancho y el alto que
+necesites). Así se ve bien tanto en computadora como en celular.
+
+## Si te equivocaste
+
+Subí el archivo corregido **con el mismo nombre**: reemplaza al anterior y la web
+se actualiza sola. Para borrar una edición, borrá el archivo de esta carpeta.
+
+La subcarpeta `rendered/` la genera el sistema con las conversiones de los PDF.
+No hace falta tocarla.
