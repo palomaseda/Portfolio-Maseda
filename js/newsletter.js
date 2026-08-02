@@ -219,9 +219,18 @@ function renderEdition(edition) {
   document.getElementById('editionDate').setAttribute('datetime', edition.date);
   document.getElementById('editionTitle').textContent = edition.title;
 
-  const image = document.getElementById('editionImage');
-  image.src = encodeURI(edition.file);
-  image.alt = edition.title;
+  const figure = document.getElementById('editionFigure');
+  figure.innerHTML = '';
+
+  const pages = Array.isArray(edition.pages) && edition.pages.length ? edition.pages : [edition.file];
+  pages.forEach((page, index) => {
+    const image = document.createElement('img');
+    image.src = encodeURI(page);
+    image.alt = pages.length > 1 ? `${edition.title} — ${index + 1}/${pages.length}` : edition.title;
+    image.loading = index === 0 ? 'eager' : 'lazy';
+    image.decoding = 'async';
+    figure.appendChild(image);
+  });
 
   renderPager(edition);
 }
