@@ -3,9 +3,10 @@
 Genera data/newsletter.json a partir de los archivos de la carpeta newsletter/.
 
 Cada edición es una imagen o un PDF (lo que exporte Canva). El nombre del
-archivo define la fecha y el título, con este formato:
+archivo define la fecha y, opcionalmente, el título:
 
     AAAA-MM-DD__Titulo-de-la-edicion.png
+    AAAA-MM-DD.png                       (sin título: solo se muestra la fecha)
 
 El mes y el día pueden llevar o no el cero adelante (2026-8-1 y 2026-08-01
 son equivalentes).
@@ -14,6 +15,7 @@ Ejemplos válidos:
     2026-08-01__Primera-edicion.png
     2026-8-1__Primera-edicion.png
     2026-09-15__Tintes naturales.pdf
+    2026-09-15.pdf
 
 Los PDF se convierten a imagen (todas las páginas) dentro de newsletter/rendered/,
 porque los navegadores de celular no muestran PDFs embebidos de forma confiable.
@@ -49,7 +51,8 @@ MAX_PDF_PAGES = 60
 IGNORED_NAMES = {"readme.md", ".gitkeep", ".ds_store"}
 
 # Acepta el mes y el día con o sin cero adelante (8 u 08, 6 o 06).
-NAME_PATTERN = re.compile(r"^(\d{4})-(\d{1,2})-(\d{1,2})__(.+)$")
+# El título (después de "__") es opcional.
+NAME_PATTERN = re.compile(r"^(\d{4})-(\d{1,2})-(\d{1,2})(?:__(.+))?$")
 
 
 def parse_date(year: str, month: str, day: str) -> str | None:
@@ -144,7 +147,7 @@ def build_editions() -> list[dict]:
 
         match = NAME_PATTERN.match(path.stem)
         if not match:
-            print(f"⚠ Ignorado, el nombre no sigue el formato AAAA-MM-DD__Titulo: {path.name}")
+            print(f"⚠ Ignorado, el nombre no sigue el formato AAAA-MM-DD o AAAA-MM-DD__Titulo: {path.name}")
             continue
 
         year, month, day, raw_title = match.groups()
@@ -152,6 +155,9 @@ def build_editions() -> list[dict]:
         if date is None:
             print(f"⚠ Ignorado, la fecha no es válida ({year}-{month}-{day}): {path.name}")
             continue
+
+        title = re.sub(r"[-_]+", " ", raw_title).strip() if raw_title else ""
+        slug = f"{date}-{slugify(title)}" if title else date
 
         if suffix == PDF_EXTENSION:
             rendered_pages = render_pdf_pages(path)
@@ -163,10 +169,10 @@ def build_editions() -> list[dict]:
             pages = [f"newsletter/{path.name}"]
 
         editions.append({
-            "slug": f"{date}-{slugify(raw_title)}",
+            "slug": slug,
             "file": pages[0],
             "pages": pages,
-            "title": re.sub(r"[-_]+", " ", raw_title).strip(),
+            "title": title,
             "date": date,
         })
 

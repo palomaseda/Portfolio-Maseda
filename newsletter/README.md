@@ -6,7 +6,7 @@ El sitio la publica sola: no hay que tocar código.
 Sirve tanto **PDF** como **PNG / JPG**. Si subís un PDF se convierte a imagen
 automáticamente, así que descargá de Canva lo que te resulte más cómodo.
 
-> Si el PDF tiene varias páginas, se publica la primera.
+> Si el PDF tiene varias páginas, se publican todas, una debajo de la otra.
 
 ## Cómo nombrar el archivo
 
@@ -16,11 +16,15 @@ AAAA-MM-DD__Titulo-de-la-edicion.png
 
 La fecha va adelante, después dos guiones bajos `__`, y después el título.
 
+El título es **opcional**. Si el archivo se llama solo con la fecha
+(`2026-08-01.png`), la web muestra únicamente la fecha, sin título.
+
 Ejemplos:
 
 ```
 2026-08-01__Primera-edicion.png
 2026-09-15__Tintes naturales.jpg
+2026-09-15.pdf
 ```
 
 De ahí salen la fecha y el título que se muestran en la web. Los guiones del

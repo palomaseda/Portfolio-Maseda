@@ -198,7 +198,7 @@ function renderArchive() {
 
     const image = document.createElement('img');
     image.src = encodeURI(edition.file);
-    image.alt = edition.title;
+    image.alt = displayLabel(edition, lang);
     image.loading = 'lazy';
     image.decoding = 'async';
     thumb.appendChild(image);
@@ -209,15 +209,22 @@ function renderArchive() {
     const date = document.createElement('span');
     date.className = 'news-card-date';
     date.textContent = formatDate(edition.date, lang);
+    body.appendChild(date);
 
-    const title = document.createElement('span');
-    title.className = 'news-card-title';
-    title.textContent = edition.title;
+    if (edition.title) {
+      const title = document.createElement('span');
+      title.className = 'news-card-title';
+      title.textContent = edition.title;
+      body.appendChild(title);
+    }
 
-    body.append(date, title);
     card.append(thumb, body);
     grid.appendChild(card);
   });
+}
+
+function displayLabel(edition, lang) {
+  return edition.title || formatDate(edition.date, lang);
 }
 
 function renderEdition(edition) {
@@ -225,11 +232,14 @@ function renderEdition(edition) {
 
   document.getElementById('newsArchive').hidden = true;
   document.getElementById('newsEdition').hidden = false;
-  document.title = `${edition.title} — ${getTranslationValue(lang, 'meta.title')}`;
+  document.title = `${displayLabel(edition, lang)} — ${getTranslationValue(lang, 'meta.title')}`;
 
   document.getElementById('editionDate').textContent = formatDate(edition.date, lang);
   document.getElementById('editionDate').setAttribute('datetime', edition.date);
-  document.getElementById('editionTitle').textContent = edition.title;
+
+  const titleEl = document.getElementById('editionTitle');
+  titleEl.textContent = edition.title;
+  titleEl.hidden = !edition.title;
 
   const figure = document.getElementById('editionFigure');
   figure.innerHTML = '';
@@ -238,7 +248,8 @@ function renderEdition(edition) {
   pages.forEach((page, index) => {
     const image = document.createElement('img');
     image.src = encodeURI(page);
-    image.alt = pages.length > 1 ? `${edition.title} — ${index + 1}/${pages.length}` : edition.title;
+    const label = displayLabel(edition, lang);
+    image.alt = pages.length > 1 ? `${label} — ${index + 1}/${pages.length}` : label;
     image.loading = index === 0 ? 'eager' : 'lazy';
     image.decoding = 'async';
     figure.appendChild(image);
@@ -267,7 +278,7 @@ function renderPager(edition) {
 
     const title = document.createElement('span');
     title.className = 'news-pager-title';
-    title.textContent = target.title;
+    title.textContent = displayLabel(target, lang);
 
     link.append(label, title);
     pager.appendChild(link);
