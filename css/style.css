@@ -264,26 +264,28 @@ body::after {
 /* Hamburger (solo mobile) */
 .hamburger {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 7px;
+  position: relative;
   width: 30px;
   height: var(--nav-h);
 }
 .hamburger span {
-  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
   width: 100%;
   height: 1px;
   background: var(--c-text);
-  transform-origin: left center;
-  transition: transform var(--t-medium), opacity var(--t-fast), width var(--t-medium);
+  transform: translateY(-4px);
+  transition: transform var(--t-medium), opacity var(--t-fast);
+}
+.hamburger span:last-child {
+  transform: translateY(4px);
 }
 .hamburger.active span:first-child {
-  transform: rotate(38deg);
+  transform: translateY(0) rotate(45deg);
 }
 .hamburger.active span:last-child {
-  transform: rotate(-38deg);
-  width: 100%;
+  transform: translateY(0) rotate(-45deg);
 }
 
 

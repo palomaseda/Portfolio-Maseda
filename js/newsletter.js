@@ -17,6 +17,7 @@ const translations = {
       projects: 'Proyectos',
       gallery: 'Galería',
       contact: 'Contacto',
+      newsletter: 'Newsletter',
     },
     news: {
       label: '05 — NEWSLETTER',
@@ -27,6 +28,11 @@ const translations = {
       notFound: 'No encontramos esa edición. Estas son todas las publicadas.',
       previous: 'Edición anterior',
       next: 'Edición siguiente',
+    },
+    newsletter: {
+      kicker: 'Newsletter',
+      title: 'Sumate al proceso',
+      meta: 'Novedades, investigaciones y nuevos biomateriales, directo a tu correo. Sin spam.',
     },
     footer: {
       copy: '© 2025 — Diseño Textil & Biomateriales',
@@ -42,6 +48,7 @@ const translations = {
       projects: 'Projects',
       gallery: 'Gallery',
       contact: 'Contact',
+      newsletter: 'Newsletter',
     },
     news: {
       label: '05 — NEWSLETTER',
@@ -52,6 +59,11 @@ const translations = {
       notFound: 'We could not find that edition. These are all the published ones.',
       previous: 'Previous edition',
       next: 'Next edition',
+    },
+    newsletter: {
+      kicker: 'Newsletter',
+      title: 'Join the process',
+      meta: 'Updates, research and new biomaterials, straight to your inbox. No spam.',
     },
     footer: {
       copy: '© 2025 — Textile Design & Biomaterials',

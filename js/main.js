@@ -34,6 +34,7 @@ const translations = {
       projects: 'Proyectos',
       gallery: 'Galería',
       contact: 'Contacto',
+      newsletter: 'Newsletter',
     },
     hero: {
       subtitle: 'DISEÑO TEXTIL · BIOMATERIALES',
@@ -117,6 +118,7 @@ const translations = {
       projects: 'Projects',
       gallery: 'Gallery',
       contact: 'Contact',
+      newsletter: 'Newsletter',
     },
     hero: {
       subtitle: 'TEXTILE DESIGN · BIOMATERIALS',
