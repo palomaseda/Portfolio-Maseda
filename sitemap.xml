@@ -5,7 +5,7 @@
 >
   <url>
     <loc>https://palomaseda.github.io/Portfolio-Maseda/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -33,5 +33,11 @@
       <image:title>La indumentaria como segunda piel</image:title>
       <image:caption>Obra sobre celulosa bacteriana, anatomía humana y crisis medioambiental.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://palomaseda.github.io/Portfolio-Maseda/newsletter.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
