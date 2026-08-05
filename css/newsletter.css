@@ -144,6 +144,11 @@
 
 .news-back:hover { color: var(--c-accent); }
 
+.news-latest-label {
+  display: block;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
 .news-edition-header {
   max-width: 46rem;
   margin-bottom: clamp(2.2rem, 5vw, 3.5rem);
@@ -181,6 +186,24 @@
   border: 1px solid rgba(221, 211, 194, 0.9);
   border-radius: 1.1rem;
   background: var(--c-surface);
+}
+
+.news-archive-cta {
+  display: block;
+  width: fit-content;
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+}
+
+
+/* Elementos que se muestran/ocultan con el atributo `hidden` vía JS:
+   como cada uno declara su propio `display`, esa regla del autor le
+   gana al `display:none` del user-agent para `[hidden]` y quedarían
+   visibles igual. Se lo devolvemos explícitamente. */
+.news-back[hidden],
+.news-latest-label[hidden],
+.news-archive-cta[hidden],
+.news-pager[hidden] {
+  display: none;
 }
 
 

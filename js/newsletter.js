@@ -28,6 +28,8 @@ const translations = {
       notFound: 'No encontramos esa edición. Estas son todas las publicadas.',
       previous: 'Edición anterior',
       next: 'Edición siguiente',
+      latest: 'Última publicación',
+      viewArchive: 'Ver publicaciones anteriores →',
     },
     newsletter: {
       kicker: 'Newsletter',
@@ -59,6 +61,8 @@ const translations = {
       notFound: 'We could not find that edition. These are all the published ones.',
       previous: 'Previous edition',
       next: 'Next edition',
+      latest: 'Latest edition',
+      viewArchive: 'See previous editions →',
     },
     newsletter: {
       kicker: 'Newsletter',
@@ -227,7 +231,7 @@ function displayLabel(edition, lang) {
   return edition.title || formatDate(edition.date, lang);
 }
 
-function renderEdition(edition) {
+function renderEdition(edition, isLatest = false) {
   const lang = currentLang();
 
   document.getElementById('newsArchive').hidden = true;
@@ -255,7 +259,23 @@ function renderEdition(edition) {
     figure.appendChild(image);
   });
 
-  renderPager(edition);
+  /* En la última publicación (la vista por defecto) mostramos el rótulo
+     "Última publicación" y el botón al archivo, en vez del link de vuelta
+     y el paginador anterior/siguiente entre ediciones puntuales. */
+  document.getElementById('newsBackLink').hidden = isLatest;
+  document.getElementById('newsLatestLabel').hidden = !isLatest;
+
+  const archiveCta = document.getElementById('newsArchiveCta');
+  archiveCta.hidden = !(isLatest && editions.length > 1);
+
+  const pager = document.getElementById('newsPager');
+  if (isLatest) {
+    pager.hidden = true;
+    pager.innerHTML = '';
+  } else {
+    pager.hidden = false;
+    renderPager(edition);
+  }
 }
 
 function renderPager(edition) {
@@ -294,11 +314,24 @@ function render() {
     return;
   }
 
-  const slug = new URLSearchParams(window.location.search).get('ed');
-  const edition = slug ? editions.find((item) => item.slug === slug) : null;
+  const params = new URLSearchParams(window.location.search);
 
+  if (params.get('view') === 'archive') {
+    renderArchive();
+    return;
+  }
+
+  const slug = params.get('ed');
+
+  if (!slug) {
+    // Sin parámetros: mostrar la última publicación directamente.
+    renderEdition(editions[0], true);
+    return;
+  }
+
+  const edition = editions.find((item) => item.slug === slug);
   if (edition) {
-    renderEdition(edition);
+    renderEdition(edition, edition.slug === editions[0].slug);
   } else {
     renderArchive();
   }

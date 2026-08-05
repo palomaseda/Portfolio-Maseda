@@ -109,9 +109,10 @@
         </p>
       </section>
 
-      <!-- ── Edición individual ── -->
+      <!-- ── Edición individual (o la última publicación, por defecto) ── -->
       <article class="news-edition" id="newsEdition" hidden>
-        <a class="news-back" href="newsletter.html" data-i18n="news.back">← Todas las ediciones</a>
+        <a class="news-back" href="newsletter.html?view=archive" id="newsBackLink" data-i18n="news.back">← Todas las ediciones</a>
+        <span class="contact-link-kicker news-latest-label" id="newsLatestLabel" data-i18n="news.latest" hidden>Última publicación</span>
 
         <header class="news-edition-header">
           <time class="news-edition-date" id="editionDate"></time>
@@ -119,6 +120,8 @@
         </header>
 
         <div class="news-figure" id="editionFigure"></div>
+
+        <a class="newsletter-btn news-archive-cta" id="newsArchiveCta" href="newsletter.html?view=archive" data-i18n="news.viewArchive" hidden>Ver publicaciones anteriores →</a>
 
         <nav class="news-pager" id="newsPager"></nav>
       </article>
