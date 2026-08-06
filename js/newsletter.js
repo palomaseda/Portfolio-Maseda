@@ -246,15 +246,34 @@ function renderEdition(edition, isLatest = false) {
   document.title = `${displayLabel(edition, lang)} — ${getTranslationValue(lang, 'meta.title')}`;
 
   const dateEl = document.getElementById('editionDate');
+  const titleEl = document.getElementById('editionTitle');
+  const labelEl = document.getElementById('newsLatestLabel');
+
   dateEl.textContent = formatDate(edition.date, lang);
   dateEl.setAttribute('datetime', edition.date);
+  labelEl.hidden = !isLatest;
 
-  /* Sin título, la fecha ocupa el lugar del título grande en vez de
-     quedar como la única línea, chica y sin peso visual. */
-  const titleEl = document.getElementById('editionTitle');
-  dateEl.hidden = !edition.title;
-  titleEl.hidden = false;
-  titleEl.textContent = edition.title || formatDate(edition.date, lang);
+  if (edition.title) {
+    // Hay título propio: fecha chica arriba, título grande abajo,
+    // como siempre. "Última publicación" (si aplica) queda como
+    // rótulo chico adicional, sin competir con el título.
+    labelEl.classList.remove('news-latest-label--heading');
+    dateEl.hidden = false;
+    titleEl.hidden = false;
+    titleEl.textContent = edition.title;
+  } else if (isLatest) {
+    // Sin título, pero es la última publicación: el rótulo pasa a
+    // ser el encabezado grande, y la fecha queda como detalle chico.
+    labelEl.classList.add('news-latest-label--heading');
+    dateEl.hidden = false;
+    titleEl.hidden = true;
+  } else {
+    // Sin título y no es la última: la fecha ocupa el lugar del
+    // título grande, para no dejar el encabezado vacío y sin peso.
+    dateEl.hidden = true;
+    titleEl.hidden = false;
+    titleEl.textContent = formatDate(edition.date, lang);
+  }
 
   const figure = document.getElementById('editionFigure');
   figure.innerHTML = '';
@@ -270,11 +289,10 @@ function renderEdition(edition, isLatest = false) {
     figure.appendChild(image);
   });
 
-  /* En la última publicación (la vista por defecto) mostramos el rótulo
-     "Última publicación" y el botón al archivo, en vez del link de vuelta
-     y el paginador anterior/siguiente entre ediciones puntuales. */
+  /* En la última publicación (la vista por defecto) mostramos el botón
+     al archivo en vez del link de vuelta y el paginador anterior/
+     siguiente entre ediciones puntuales. */
   document.getElementById('newsBackLink').hidden = isLatest;
-  document.getElementById('newsLatestLabel').hidden = !isLatest;
 
   const archiveCta = document.getElementById('newsArchiveCta');
   archiveCta.hidden = !(isLatest && editions.length > 1);
