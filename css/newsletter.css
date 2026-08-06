@@ -202,6 +202,7 @@
 .news-back[hidden],
 .news-latest-label[hidden],
 .news-archive-cta[hidden],
+.news-edition-date[hidden],
 .news-pager[hidden] {
   display: none;
 }

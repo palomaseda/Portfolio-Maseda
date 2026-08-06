@@ -210,15 +210,22 @@ function renderArchive() {
     const body = document.createElement('div');
     body.className = 'news-card-body';
 
-    const date = document.createElement('span');
-    date.className = 'news-card-date';
-    date.textContent = formatDate(edition.date, lang);
-    body.appendChild(date);
-
+    /* Sin título, la fecha pasa a ocupar el lugar del título grande
+       en vez de quedar como la única línea, chica y sin peso visual. */
     if (edition.title) {
+      const date = document.createElement('span');
+      date.className = 'news-card-date';
+      date.textContent = formatDate(edition.date, lang);
+      body.appendChild(date);
+
       const title = document.createElement('span');
       title.className = 'news-card-title';
       title.textContent = edition.title;
+      body.appendChild(title);
+    } else {
+      const title = document.createElement('span');
+      title.className = 'news-card-title';
+      title.textContent = formatDate(edition.date, lang);
       body.appendChild(title);
     }
 
@@ -238,12 +245,16 @@ function renderEdition(edition, isLatest = false) {
   document.getElementById('newsEdition').hidden = false;
   document.title = `${displayLabel(edition, lang)} — ${getTranslationValue(lang, 'meta.title')}`;
 
-  document.getElementById('editionDate').textContent = formatDate(edition.date, lang);
-  document.getElementById('editionDate').setAttribute('datetime', edition.date);
+  const dateEl = document.getElementById('editionDate');
+  dateEl.textContent = formatDate(edition.date, lang);
+  dateEl.setAttribute('datetime', edition.date);
 
+  /* Sin título, la fecha ocupa el lugar del título grande en vez de
+     quedar como la única línea, chica y sin peso visual. */
   const titleEl = document.getElementById('editionTitle');
-  titleEl.textContent = edition.title;
-  titleEl.hidden = !edition.title;
+  dateEl.hidden = !edition.title;
+  titleEl.hidden = false;
+  titleEl.textContent = edition.title || formatDate(edition.date, lang);
 
   const figure = document.getElementById('editionFigure');
   figure.innerHTML = '';
