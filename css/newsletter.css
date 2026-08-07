@@ -144,23 +144,6 @@
 
 .news-back:hover { color: var(--c-accent); }
 
-.news-latest-label {
-  display: block;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-}
-
-/* Cuando la edición no tiene título propio, "Última publicación" pasa
-   a hacer de encabezado grande en vez de quedar como rótulo chico. */
-.news-latest-label.news-latest-label--heading {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 300;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--c-text);
-  margin-bottom: var(--sp-2);
-}
-
 .news-edition-header {
   max-width: 46rem;
   margin-bottom: clamp(2.2rem, 5vw, 3.5rem);
@@ -200,22 +183,10 @@
   background: var(--c-surface);
 }
 
-.news-archive-cta {
-  display: block;
-  width: fit-content;
-  margin: clamp(2rem, 4vw, 3rem) auto 0;
-}
-
-
-/* Elementos que se muestran/ocultan con el atributo `hidden` vía JS:
-   como cada uno declara su propio `display`, esa regla del autor le
-   gana al `display:none` del user-agent para `[hidden]` y quedarían
-   visibles igual. Se lo devolvemos explícitamente. */
-.news-back[hidden],
-.news-latest-label[hidden],
-.news-archive-cta[hidden],
-.news-edition-date[hidden],
-.news-pager[hidden] {
+/* .news-edition-date declara su propio `display`, y esa regla del
+   autor le gana al `display:none` del user-agent para `[hidden]`, así
+   que quedaría visible igual sin esto. */
+.news-edition-date[hidden] {
   display: none;
 }
 

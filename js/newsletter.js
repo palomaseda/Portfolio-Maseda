@@ -28,8 +28,6 @@ const translations = {
       notFound: 'No encontramos esa edición. Estas son todas las publicadas.',
       previous: 'Edición anterior',
       next: 'Edición siguiente',
-      latest: 'Última publicación',
-      viewArchive: 'Ver publicaciones anteriores →',
     },
     newsletter: {
       kicker: 'Newsletter',
@@ -61,8 +59,6 @@ const translations = {
       notFound: 'We could not find that edition. These are all the published ones.',
       previous: 'Previous edition',
       next: 'Next edition',
-      latest: 'Latest edition',
-      viewArchive: 'See previous editions →',
     },
     newsletter: {
       kicker: 'Newsletter',
@@ -238,7 +234,7 @@ function displayLabel(edition, lang) {
   return edition.title || formatDate(edition.date, lang);
 }
 
-function renderEdition(edition, isLatest = false) {
+function renderEdition(edition) {
   const lang = currentLang();
 
   document.getElementById('newsArchive').hidden = true;
@@ -247,33 +243,15 @@ function renderEdition(edition, isLatest = false) {
 
   const dateEl = document.getElementById('editionDate');
   const titleEl = document.getElementById('editionTitle');
-  const labelEl = document.getElementById('newsLatestLabel');
 
   dateEl.textContent = formatDate(edition.date, lang);
   dateEl.setAttribute('datetime', edition.date);
-  labelEl.hidden = !isLatest;
 
-  if (edition.title) {
-    // Hay título propio: fecha chica arriba, título grande abajo,
-    // como siempre. "Última publicación" (si aplica) queda como
-    // rótulo chico adicional, sin competir con el título.
-    labelEl.classList.remove('news-latest-label--heading');
-    dateEl.hidden = false;
-    titleEl.hidden = false;
-    titleEl.textContent = edition.title;
-  } else if (isLatest) {
-    // Sin título, pero es la última publicación: el rótulo pasa a
-    // ser el encabezado grande, y la fecha queda como detalle chico.
-    labelEl.classList.add('news-latest-label--heading');
-    dateEl.hidden = false;
-    titleEl.hidden = true;
-  } else {
-    // Sin título y no es la última: la fecha ocupa el lugar del
-    // título grande, para no dejar el encabezado vacío y sin peso.
-    dateEl.hidden = true;
-    titleEl.hidden = false;
-    titleEl.textContent = formatDate(edition.date, lang);
-  }
+  /* Sin título, la fecha ocupa el lugar del título grande en vez de
+     quedar como la única línea, chica y sin peso visual. */
+  dateEl.hidden = !edition.title;
+  titleEl.hidden = false;
+  titleEl.textContent = edition.title || formatDate(edition.date, lang);
 
   const figure = document.getElementById('editionFigure');
   figure.innerHTML = '';
@@ -289,22 +267,7 @@ function renderEdition(edition, isLatest = false) {
     figure.appendChild(image);
   });
 
-  /* En la última publicación (la vista por defecto) mostramos el botón
-     al archivo en vez del link de vuelta y el paginador anterior/
-     siguiente entre ediciones puntuales. */
-  document.getElementById('newsBackLink').hidden = isLatest;
-
-  const archiveCta = document.getElementById('newsArchiveCta');
-  archiveCta.hidden = !(isLatest && editions.length > 1);
-
-  const pager = document.getElementById('newsPager');
-  if (isLatest) {
-    pager.hidden = true;
-    pager.innerHTML = '';
-  } else {
-    pager.hidden = false;
-    renderPager(edition);
-  }
+  renderPager(edition);
 }
 
 function renderPager(edition) {
@@ -343,24 +306,11 @@ function render() {
     return;
   }
 
-  const params = new URLSearchParams(window.location.search);
+  const slug = new URLSearchParams(window.location.search).get('ed');
+  const edition = slug ? editions.find((item) => item.slug === slug) : null;
 
-  if (params.get('view') === 'archive') {
-    renderArchive();
-    return;
-  }
-
-  const slug = params.get('ed');
-
-  if (!slug) {
-    // Sin parámetros: mostrar la última publicación directamente.
-    renderEdition(editions[0], true);
-    return;
-  }
-
-  const edition = editions.find((item) => item.slug === slug);
   if (edition) {
-    renderEdition(edition, edition.slug === editions[0].slug);
+    renderEdition(edition);
   } else {
     renderArchive();
   }
