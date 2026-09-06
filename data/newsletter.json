@@ -1,6 +1,18 @@
 {
   "editions": [
     {
+      "slug": "2026-09-06-carozo-de-palta",
+      "file": "newsletter/rendered/2026-09-06__Carozo de palta.3e547cb991.p01.jpg",
+      "pages": [
+        "newsletter/rendered/2026-09-06__Carozo de palta.3e547cb991.p01.jpg",
+        "newsletter/rendered/2026-09-06__Carozo de palta.3e547cb991.p02.jpg",
+        "newsletter/rendered/2026-09-06__Carozo de palta.3e547cb991.p03.jpg",
+        "newsletter/rendered/2026-09-06__Carozo de palta.3e547cb991.p04.jpg"
+      ],
+      "title": "Carozo de palta",
+      "date": "2026-09-06"
+    },
+    {
       "slug": "2026-08-06",
       "file": "newsletter/rendered/2026-08-06.9123997863.p01.jpg",
       "pages": [
