@@ -10,8 +10,8 @@
 
 /* Google Form: FORM_ID es lo que va entre /d/e/ y /viewform en el link
    del formulario; ENTRY_ID es el campo de la pregunta "Email". */
-const SUBSCRIBE_FORM_ID = '';
-const SUBSCRIBE_ENTRY_ID = '';
+const SUBSCRIBE_FORM_ID = '1FAIpQLSf2jJnsirBKrBH5xtsMi_mJmyUXAT2yYjKjFVOjDAAspSSvDw';
+const SUBSCRIBE_ENTRY_ID = '1541267682';
 
 const SUBSCRIBE_TEXTS = {
   es: {
