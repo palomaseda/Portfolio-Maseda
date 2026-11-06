@@ -1,6 +1,19 @@
 {
   "editions": [
     {
+      "slug": "2026-11-06-antropomorfosis",
+      "file": "newsletter/rendered/2026-11-06__Antropomorfosis.4490ccb9ca.p01.jpg",
+      "pages": [
+        "newsletter/rendered/2026-11-06__Antropomorfosis.4490ccb9ca.p01.jpg",
+        "newsletter/rendered/2026-11-06__Antropomorfosis.4490ccb9ca.p02.jpg",
+        "newsletter/rendered/2026-11-06__Antropomorfosis.4490ccb9ca.p03.jpg",
+        "newsletter/rendered/2026-11-06__Antropomorfosis.4490ccb9ca.p04.jpg",
+        "newsletter/rendered/2026-11-06__Antropomorfosis.4490ccb9ca.p05.jpg"
+      ],
+      "title": "Antropomorfosis",
+      "date": "2026-11-06"
+    },
+    {
       "slug": "2026-10-06-muestras",
       "file": "newsletter/rendered/2026-10-06__Muestras.f0064fce16.p01.jpg",
       "pages": [
