@@ -1,0 +1,55 @@
+name: Sync Newsletter from Google Drive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsletter-drive-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PDF conversion dependencies
+        run: pip install pymupdf pillow
+
+      - name: Pull new editions from Google Drive
+        env:
+          GDRIVE_API_KEY: ${{ secrets.GDRIVE_API_KEY }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: python3 sync_drive_newsletter.py
+
+      # Los commits hechos con el token del workflow no disparan
+      # build-newsletter.yml, así que el índice se arma acá mismo.
+      - name: Build newsletter index
+        run: python3 build_newsletter.py
+
+      - name: Commit changes
+        run: |
+          git add -A newsletter data
+
+          if git diff --cached --quiet; then
+            echo "No newsletter changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sync newsletter from Google Drive"
+          git pull --rebase origin main
+          git push

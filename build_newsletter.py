@@ -87,30 +87,34 @@ def render_pdf_pages(path: Path) -> list[Path] | None:
     digest = hashlib.sha1(path.read_bytes()).hexdigest()[:10]
     render_dir = NEWSLETTER_DIR / RENDER_DIRNAME
 
-    with fitz.open(path) as document:
-        page_count = document.page_count
-        if not page_count:
-            print(f"⚠ El PDF no tiene páginas: {path.name}")
-            return None
+    try:
+        with fitz.open(path) as document:
+            page_count = document.page_count
+            if not page_count:
+                print(f"⚠ El PDF no tiene páginas: {path.name}")
+                return None
 
-        if page_count > MAX_PDF_PAGES:
-            print(f"⚠ {path.name} tiene {page_count} páginas, se publican solo las primeras {MAX_PDF_PAGES}.")
-            page_count = MAX_PDF_PAGES
+            if page_count > MAX_PDF_PAGES:
+                print(f"⚠ {path.name} tiene {page_count} páginas, se publican solo las primeras {MAX_PDF_PAGES}.")
+                page_count = MAX_PDF_PAGES
 
-        outputs = [
-            render_dir / f"{path.stem}.{digest}.p{index + 1:02d}.jpg"
-            for index in range(page_count)
-        ]
+            outputs = [
+                render_dir / f"{path.stem}.{digest}.p{index + 1:02d}.jpg"
+                for index in range(page_count)
+            ]
 
-        if all(output.exists() for output in outputs):
-            return outputs
+            if all(output.exists() for output in outputs):
+                return outputs
 
-        render_dir.mkdir(parents=True, exist_ok=True)
-        for index, output in enumerate(outputs):
-            if output.exists():
-                continue
-            pixmap = document.load_page(index).get_pixmap(dpi=RENDER_DPI)
-            pixmap.pil_save(output, format="JPEG", quality=RENDER_QUALITY, optimize=True)
+            render_dir.mkdir(parents=True, exist_ok=True)
+            for index, output in enumerate(outputs):
+                if output.exists():
+                    continue
+                pixmap = document.load_page(index).get_pixmap(dpi=RENDER_DPI)
+                pixmap.pil_save(output, format="JPEG", quality=RENDER_QUALITY, optimize=True)
+    except Exception as error:  # PDF dañado, truncado o que no es un PDF
+        print(f"⚠ No se pudo convertir {path.name}, se saltea: {error}")
+        return None
 
     print(f"✓ PDF convertido: {path.name} → {len(outputs)} página/s en {RENDER_DIRNAME}/")
     return outputs
