@@ -581,7 +581,14 @@
           <a href="newsletter.html" class="newsletter-archive-link" data-i18n="newsletter.archive">Ver ediciones anteriores ↗</a>
         </div>
         <div class="newsletter-action">
-          <script async src="https://eomail5.com/form/64c547d4-8c30-11f1-9548-8b4d76a765c4.js" data-form="64c547d4-8c30-11f1-9548-8b4d76a765c4"></script>
+          <form class="newsletter-form" data-subscribe novalidate>
+            <div class="newsletter-field">
+              <input type="email" name="email" class="newsletter-input" required autocomplete="email" aria-label="Email" placeholder="tu@email.com">
+              <button type="submit" class="newsletter-btn">Suscribirme</button>
+            </div>
+            <input type="text" name="website" class="newsletter-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="newsletter-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </div>
@@ -617,6 +624,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/analytics.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/subscribe.js"></script>
 
 </body>
 </html>
