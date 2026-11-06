@@ -4,6 +4,13 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '*/15 * * * *'
+  # Corre también cuando cambia el propio sincronizador, para ver enseguida
+  # si quedó andando.
+  push:
+    branches: [main]
+    paths:
+      - 'sync_drive_newsletter.py'
+      - '.github/workflows/sync-drive-newsletter.yml'
 
 permissions:
   contents: write
@@ -28,10 +35,11 @@ jobs:
       - name: Install PDF conversion dependencies
         run: pip install pymupdf pillow
 
+      # La carpeta es pública ("Cualquier persona con el enlace"), así que su ID
+      # no es secreto. Para usar otra carpeta, cambiá este valor.
       - name: Pull new editions from Google Drive
         env:
-          GDRIVE_API_KEY: ${{ secrets.GDRIVE_API_KEY }}
-          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          GDRIVE_FOLDER_ID: 1JNkBPHt-HnMdxecyF5NWmPlqMCm4s3W3
         run: python3 sync_drive_newsletter.py
 
       # Los commits hechos con el token del workflow no disparan

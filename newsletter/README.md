@@ -19,8 +19,9 @@ https://palomaseda.github.io/Portfolio-Maseda/newsletter.html
 
 Todo lo que pasa en la carpeta se refleja en la web:
 
-- **Corregir una edición:** reemplazá el archivo en Drive (o subí otro con el
-  mismo nombre) y se actualiza sola.
+- **Corregir una edición:** reemplazá el archivo en Drive (clic derecho →
+  *Administrar versiones* → *Subir nueva versión*) y se actualiza sola. La fecha
+  no cambia.
 - **Cambiar el título:** renombrá el archivo en Drive.
 - **Sacar una edición:** borrá el archivo de la carpeta.
 
@@ -39,17 +40,18 @@ Si querés elegir la fecha, empezá el nombre con `AAAA-MM-DD__`:
 
 El mes y el día pueden ir con o sin cero (`2026-9-5` equivale a `2026-09-05`).
 
-## Configuración única (para quien mantiene el repo)
+## Cómo está conectado (para quien mantiene el repo)
 
-La sincronización necesita dos secretos en GitHub (*Settings → Secrets and
-variables → Actions*):
+No hay claves: el workflow *Sync Newsletter from Google Drive* lee la vista
+pública de la carpeta, así que la carpeta tiene que seguir compartida como
+*Cualquier persona con el enlace → Lector*. Su ID está en
+`.github/workflows/sync-drive-newsletter.yml` (`GDRIVE_FOLDER_ID`); para usar
+otra carpeta, se cambia ahí.
 
-- `GDRIVE_API_KEY`: clave de API de Google con la *Google Drive API* habilitada.
-- `GDRIVE_FOLDER_ID`: el ID de la carpeta de Drive (lo que va después de
-  `/folders/` en su URL). La carpeta tiene que estar compartida como
-  *Cualquier persona con el enlace → Lector*.
-
-Mientras no estén cargados, el workflow no hace nada.
+Si Google cambia esa vista o bloquea a los servidores de GitHub, no se borra
+nada y las ediciones ya publicadas siguen en la web; lo nuevo simplemente no
+aparece. El motivo queda en la pestaña *Actions*: como error si no se pudo
+leer la carpeta, o como aviso si falló la descarga de un archivo.
 
 ## Alternativa: subir directo a GitHub
 
