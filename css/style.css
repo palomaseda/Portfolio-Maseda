@@ -435,37 +435,15 @@ body::after {
 
 /* Indicador de scroll */
 /* ════════════════════════════════════════════════════════════
-   MARQUEE — Cinta de texto continua
+   SEPARADOR — línea fina entre secciones
+   Se "dibuja" de izquierda a derecha al llegar (ver initScrollReveals);
+   sin JS queda la línea completa.
    ════════════════════════════════════════════════════════════ */
-.marquee {
-  overflow: hidden;
-  border-top:    1px solid var(--c-border);
-  border-bottom: 1px solid var(--c-border);
-  padding: var(--sp-3) 0;
-  background: var(--c-bg);
-}
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  width: max-content;
-  animation: marqueeScroll 28s linear infinite;
-}
-.marquee-track:hover { animation-play-state: paused; }
-
-.marquee-track span {
-  font-size: 0.62rem;
-  font-weight: 400;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--c-text-muted);
-  white-space: nowrap;
-}
-
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+.section-divider span {
+  display: block;
+  height: 1px;
+  background: var(--c-border);
+  transform-origin: left center;
 }
 
 
@@ -509,8 +487,79 @@ body::after {
 }
 .about-image-wrap:hover .about-img { transform: scale(1.04); }
 
-.about-caption {
+/* Varias fotos: la que entra se funde ENCIMA de la que sale (que sigue opaca
+   hasta que termina el fundido), así no hay un instante a media transparencia
+   donde se vea el fondo. Sin JS queda visible la primera (lleva is-active). */
+.about-img:not(.is-active) {
+  opacity: 0;
+  transition: transform 0.9s var(--ease-expo), opacity 0s linear 1.4s;
+}
+.about-img.is-active {
+  opacity: 1;
+  z-index: 2;
+  transition: transform 0.9s var(--ease-expo), opacity 1.4s ease;
+}
+
+.about-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
   margin-top: var(--sp-2);
+}
+
+/* Selector de fotos: numeritos 01 02 con una línea que se va llenando
+   hasta el próximo cambio. Los crea initAboutSlides. */
+.about-dots {
+  display: flex;
+  gap: var(--sp-2);
+}
+
+.about-dot {
+  position: relative;
+  padding: 0.5rem 0 0.55rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--c-text-dim);
+  text-transform: uppercase;
+  transition: color var(--t-fast);
+}
+.about-dot:hover,
+.about-dot.is-active { color: var(--c-text); }
+.about-dot:focus-visible { outline: 1px solid var(--c-accent); outline-offset: 2px; }
+
+.about-dot-bar {
+  position: absolute;
+  left: 0;
+  right: 0.22em;           /* descuenta el espacio final del letter-spacing */
+  bottom: 0.2rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.about-dot.is-active .about-dot-bar { transform: scaleX(1); }
+
+.about-image-col.is-playing .about-dot.is-active .about-dot-bar {
+  animation: aboutProgress 6s linear forwards;
+}
+/* Pausa con el mouse encima (solo donde hay mouse: en el celular el hover
+   queda "pegado" después de tocar y congelaría la rotación) o con el foco del
+   teclado en el selector (:focus-visible, no el foco que deja un clic). */
+@media (hover: hover) {
+  .about-image-col.is-playing:hover .about-dot.is-active .about-dot-bar {
+    animation-play-state: paused;
+  }
+}
+.about-image-col.is-playing:has(:focus-visible) .about-dot.is-active .about-dot-bar {
+  animation-play-state: paused;
+}
+@keyframes aboutProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.about-caption {
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   color: var(--c-text-muted);
@@ -1408,5 +1457,4 @@ body::after {
     width: 2.2rem;
     height: 2.2rem;
   }
-  .marquee-track span { font-size: 0.55rem; }
 }

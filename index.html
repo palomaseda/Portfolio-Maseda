@@ -215,13 +215,9 @@
   </section>
 
   <!-- ============================================================
-       MARQUEE — Cinta de texto continua entre secciones
+       SEPARADOR — línea fina entre el hero y la primera sección
   ============================================================ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span data-i18n="marquee.items">BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE · BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE</span>
-    </div>
-  </div>
+  <div class="section-divider container" aria-hidden="true"><span></span></div>
 
   <!-- ============================================================
        SOBRE MÍ
@@ -234,6 +230,36 @@
         <div class="about-image-col">
           <div class="about-image-wrap">
             <div class="placeholder-label">FOTO</div>
+            <!-- Fotos apiladas con fundido (ver initAboutSlides en js/main.js).
+                 Para sumar otra: copiar un bloque <picture> con paloma-4.jpg y paloma-4-thumb.jpg. -->
+            <picture>
+              <source media="(max-width: 767px)" srcset="img/sobre-mi/paloma-2-thumb.jpg">
+              <img
+                src="img/sobre-mi/paloma-2.jpg"
+                alt="Paloma Maseda"
+                class="about-img is-active"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                width="900"
+                height="1200"
+                onerror="this.style.opacity=0"
+              >
+            </picture>
+            <picture>
+              <source media="(max-width: 767px)" srcset="img/sobre-mi/paloma-3-thumb.jpg">
+              <img
+                src="img/sobre-mi/paloma-3.jpg"
+                alt="Paloma Maseda"
+                class="about-img"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                width="900"
+                height="1200"
+                onerror="this.style.opacity=0"
+              >
+            </picture>
             <picture>
               <source media="(max-width: 767px)" srcset="img/sobre-mi/paloma-thumb.jpg">
               <img
@@ -249,7 +275,9 @@
               >
             </picture>
           </div>
-          <div class="about-caption">Buenos Aires, Argentina</div>
+          <div class="about-meta">
+            <div class="about-caption">Buenos Aires, Argentina</div>
+          </div>
         </div>
 
         <!-- Columna texto -->
@@ -331,7 +359,7 @@
                 width="900"
                 height="1200"
                 onerror="this.style.opacity=0"
-                data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg|img/proyectos/celulosa/06.jpg"
+                data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg"
               >
             </picture>
             <div class="project-overlay">
@@ -357,7 +385,7 @@
           </p>
           <button
             class="project-btn"
-            data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg|img/proyectos/celulosa/02.jpg|img/proyectos/celulosa/03.jpg|img/proyectos/celulosa/04.jpg|img/proyectos/celulosa/05.jpg|img/proyectos/celulosa/06.jpg"
+            data-gallery="img/proyectos/celulosa/cover.jpg|img/proyectos/celulosa/01.jpg"
             aria-label="Ver galería de Celulosa Bacteriana"
           >
             <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
@@ -435,7 +463,7 @@
                 width="900"
                 height="1200"
                 onerror="this.style.opacity=0"
-                data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg|img/proyectos/tintes/09.jpg|img/proyectos/tintes/10.jpg"
+                data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg"
               >
             </picture>
             <div class="project-overlay">
@@ -460,7 +488,7 @@
           </p>
           <button
             class="project-btn"
-            data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg|img/proyectos/tintes/07.jpg|img/proyectos/tintes/08.jpg|img/proyectos/tintes/09.jpg|img/proyectos/tintes/10.jpg"
+            data-gallery="img/proyectos/tintes/cover.jpg|img/proyectos/tintes/01.jpg|img/proyectos/tintes/02.jpg|img/proyectos/tintes/03.jpg|img/proyectos/tintes/04.jpg|img/proyectos/tintes/05.jpg|img/proyectos/tintes/06.jpg"
             aria-label="Ver galería de Tintes Naturales"
           >
             <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
@@ -487,7 +515,7 @@
                 width="900"
                 height="1200"
                 onerror="this.style.opacity=0"
-                data-gallery="img/proyectos/segunda-piel/cover.jpg|img/proyectos/segunda-piel/01.jpg|img/proyectos/segunda-piel/02.jpg|img/proyectos/segunda-piel/03.jpg|img/proyectos/segunda-piel/04.jpg|img/proyectos/segunda-piel/05.jpg"
+                data-gallery="img/proyectos/segunda-piel/cover.jpg|img/proyectos/segunda-piel/01.jpg"
               >
             </picture>
             <div class="project-overlay">
@@ -513,8 +541,57 @@
           </p>
           <button
             class="project-btn"
-            data-gallery="img/proyectos/segunda-piel/cover.jpg|img/proyectos/segunda-piel/01.jpg|img/proyectos/segunda-piel/02.jpg|img/proyectos/segunda-piel/03.jpg|img/proyectos/segunda-piel/04.jpg|img/proyectos/segunda-piel/05.jpg"
+            data-gallery="img/proyectos/segunda-piel/cover.jpg|img/proyectos/segunda-piel/01.jpg"
             aria-label="Ver galería de La indumentaria como segunda piel"
+          >
+            <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+
+      </article>
+
+      <!-- Proyecto 05: textos de relleno hasta definir nombre y contenido.
+           Fotos en img/proyectos/proyecto-05/ (cover.jpg + 01.jpg, 02.jpg…). -->
+      <article class="project-item" data-index="05" data-slug="proyecto-05">
+
+        <div class="project-image-col">
+          <div class="project-image-wrap">
+            <div class="placeholder-label">PROYECTO 05</div>
+            <picture>
+              <source media="(max-width: 767px)" srcset="img/proyectos/proyecto-05/cover-thumb.jpg">
+              <img
+                src="img/proyectos/proyecto-05/cover.jpg"
+                alt="Proyecto 05 — Paloma Maseda"
+                class="project-img"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                width="900"
+                height="1200"
+                onerror="this.style.opacity=0"
+                data-gallery="img/proyectos/proyecto-05/cover.jpg"
+              >
+            </picture>
+            <div class="project-overlay">
+              <span class="project-overlay-text">VER GALERÍA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-content-col">
+          <div class="project-number" aria-hidden="true">05</div>
+          <h3 class="project-title" data-i18n-html="project.proyecto05.title">Nuevo<br>proyecto</h3>
+          <div class="project-tags">
+            <span class="tag" data-i18n="project.proyecto05.tag1">Etiqueta</span>
+            <span class="tag" data-i18n="project.proyecto05.tag2">Etiqueta</span>
+          </div>
+          <p class="project-desc" data-i18n="project.proyecto05.desc">
+            Descripción del proyecto. Este texto es de relleno hasta tener el contenido final.
+          </p>
+          <button
+            class="project-btn"
+            data-gallery="img/proyectos/proyecto-05/cover.jpg"
+            aria-label="Ver galería del proyecto 05"
           >
             <span data-i18n="projects.viewGallery">Ver galería</span> <span class="btn-arrow" aria-hidden="true">→</span>
           </button>

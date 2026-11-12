@@ -18,13 +18,7 @@ from pathlib import Path
 
 BASE = Path(__file__).parent
 
-# Carpetas de proyectos
-PROJECTS = {
-    "celulosa": "Celulosa Bacteriana",
-    "cafe": "Borra de Café",
-    "tintes": "Tintes Naturales",
-    "segunda-piel": "La indumentaria como segunda piel",
-}
+PROJECTS_DIR = BASE / "img" / "proyectos"
 
 
 def get_images_for_project(project_name: str) -> list:
@@ -32,7 +26,7 @@ def get_images_for_project(project_name: str) -> list:
     Obtiene todas las imágenes de una carpeta de proyecto,
     ordenadas: cover.jpg primero, luego 01.jpg, 02.jpg, etc.
     """
-    folder = BASE / "img" / "proyectos" / project_name
+    folder = PROJECTS_DIR / project_name
     if not folder.exists():
         return []
 
@@ -69,31 +63,29 @@ def generate_gallery_string(project_name: str) -> str:
 
 
 def update_html():
-    """Actualiza index.html con los data-gallery correctos."""
+    """Actualiza los data-gallery de cada proyecto en index.html.
+
+    Cada carpeta de img/proyectos/ corresponde a la sección con el mismo
+    data-slug; si la carpeta está vacía, la galería queda vacía.
+    """
     html_path = BASE / "index.html"
     html = html_path.read_text(encoding="utf-8")
 
-    for project_name in PROJECTS.keys():
+    for folder in sorted(path for path in PROJECTS_DIR.iterdir() if path.is_dir()):
+        project_name = folder.name
+        article = re.search(
+            rf'<article[^>]*data-slug="{re.escape(project_name)}".*?</article>', html, re.S
+        )
+        if not article:
+            print(f"  ⚠️  [{project_name}] — no hay sección con ese data-slug en index.html")
+            continue
+
         gallery = generate_gallery_string(project_name)
-        if not gallery:
-            print(f"  ⚠️  [{project_name}] — sin imágenes")
-            continue
+        block = re.sub(r'data-gallery="[^"]*"', f'data-gallery="{gallery}"', article.group(0))
+        html = html[:article.start()] + block + html[article.end():]
 
-        # Encontrar y reemplazar los data-gallery de este proyecto
-        # Busca los atributos data-gallery dentro del proyecto
-        pattern = f'data-gallery="img/proyectos/{project_name}/[^"]*"'
-        replacement = f'data-gallery="{gallery}"'
-
-        matches = re.findall(pattern, html)
-        if not matches:
-            print(f"  ⚠️  [{project_name}] — no encontrado en HTML")
-            continue
-
-        html = re.sub(pattern, replacement, html)
-
-        # Contar fotos
-        images = get_images_for_project(project_name)
-        print(f"  ✓ [{project_name}] → {len(images)} fotos")
+        count = len(get_images_for_project(project_name))
+        print(f"  ✓ [{project_name}] → {count} fotos" if count else f"  · [{project_name}] — todavía sin fotos")
 
     html_path.write_text(html, encoding="utf-8")
 

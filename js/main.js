@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveals();
     initParallax();
     initLightbox();
+    initAboutSlides();
   })();
 });
 
@@ -38,9 +39,6 @@ const translations = {
     },
     hero: {
       subtitle: 'DISEÑO TEXTIL · BIOMATERIALES',
-    },
-    marquee: {
-      items: 'BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE · BIOMATERIALES · DISEÑO TEXTIL · CELULOSA BACTERIANA · TINTES NATURALES · BORRA DE CAFÉ · FADU–UBA · INVESTIGACIÓN INDEPENDIENTE',
     },
     about: {
       label: '01 — SOBRE MÍ',
@@ -88,6 +86,12 @@ const translations = {
         tag4: 'Remolacha',
         desc: 'En esta obra, exploro la similitud entre la celulosa bacteriana y la anatomía humana. Sus propiedades curativas y regenerativas de la piel. La prenda hace referencia a una segunda piel viva, nueva, frágil. Relacionándolo con la crisis medioambiental, una herida que tenemos que sanar.',
       },
+      proyecto05: {
+        title: 'Nuevo<br>proyecto',
+        tag1: 'Etiqueta',
+        tag2: 'Etiqueta',
+        desc: 'Descripción del proyecto. Este texto es de relleno hasta tener el contenido final.',
+      },
     },
     contact: {
       label: '04 — CONTACTO',
@@ -122,9 +126,6 @@ const translations = {
     },
     hero: {
       subtitle: 'TEXTILE DESIGN · BIOMATERIALS',
-    },
-    marquee: {
-      items: 'BIOMATERIALS · TEXTILE DESIGN · BACTERIAL CELLULOSE · NATURAL DYES · COFFEE GROUNDS · FADU–UBA · INDEPENDENT RESEARCH · BIOMATERIALS · TEXTILE DESIGN · BACTERIAL CELLULOSE · NATURAL DYES · COFFEE GROUNDS · FADU–UBA · INDEPENDENT RESEARCH',
     },
     about: {
       label: '01 — ABOUT',
@@ -171,6 +172,12 @@ const translations = {
         tag3: 'Hibiscus',
         tag4: 'Beetroot',
         desc: 'In this piece, I explore the similarity between bacterial cellulose and human anatomy, as well as its healing and skin-regenerating properties. The garment refers to a living, new, fragile second skin, relating it to the environmental crisis: a wound that we need to heal.',
+      },
+      proyecto05: {
+        title: 'New<br>project',
+        tag1: 'Tag',
+        tag2: 'Tag',
+        desc: 'Project description. Placeholder text until the final content is ready.',
       },
     },
     contact: {
@@ -257,22 +264,6 @@ function applyLineBreakTemplate(templateHtml = '', text = '') {
   return rebuiltLines.join('<br>');
 }
 
-function bodyToParagraphs(text = '') {
-  return String(text)
-    .split(/\n\s*\n/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean);
-}
-
-function normalizeGalleryList(value) {
-  if (!value) return [];
-  if (Array.isArray(value)) return value.filter(Boolean);
-  return String(value)
-    .split(',')
-    .map((item) => item.trim())
-    .filter(Boolean);
-}
-
 function getThumbnailPath(src = '') {
   const value = String(src).trim();
   if (!value) return value;
@@ -332,14 +323,6 @@ async function loadContent() {
       normalizeFetchedTranslations(content.translations);
       mergeDeep(translations, content.translations);
     }
-
-    if (content.about) {
-      applyAboutContent(content.about);
-    }
-
-    if (Array.isArray(content.projects)) {
-      applyProjectsContent(content.projects);
-    }
   } catch (error) {
     console.warn('No se pudo cargar content.json', error);
   }
@@ -358,46 +341,6 @@ function normalizeFetchedTranslations(contentTranslations) {
 
       fetchedProjects[key].title = applyLineBreakTemplate(baseTitle, fetchedTitle);
     });
-  });
-}
-
-function applyAboutContent(about) {
-  const image = document.querySelector('.about-img');
-  const caption = document.querySelector('.about-caption');
-  const body = document.querySelector('.about-body');
-
-  if (image && about.image) {
-    image.src = about.image;
-  }
-
-  if (caption && about.caption_es) {
-    caption.textContent = about.caption_es;
-  }
-
-  if (body && about.body_es) {
-    const paragraphs = bodyToParagraphs(about.body_es);
-    body.innerHTML = paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join('');
-  }
-}
-
-function applyProjectsContent(projects) {
-  projects.forEach((project) => {
-    const card = document.querySelector(`.project-item[data-slug="${project.slug}"]`);
-    if (!card) return;
-
-    const image = card.querySelector('.project-img');
-    const button = card.querySelector('.project-btn');
-
-    if (image && project.cover) {
-      image.src = project.cover;
-    }
-
-    const gallery = normalizeGalleryList(project.gallery);
-    if (gallery.length) {
-      const galleryString = gallery.join('|');
-      if (image) image.dataset.gallery = galleryString;
-      if (button) button.dataset.gallery = galleryString;
-    }
   });
 }
 
@@ -623,6 +566,14 @@ function initGallery() {
    ══════════════════════════════════════════════════════════════ */
 function initScrollReveals() {
 
+  /* ── Separador: la línea se dibuja de izquierda a derecha ── */
+  gsap.from('.section-divider span', {
+    scaleX: 0,
+    duration: 1.6,
+    ease: 'power3.inOut',
+    scrollTrigger: { trigger: '.section-divider', start: 'top 92%', once: true }
+  });
+
   /* ── About: imagen con clip-path de abajo hacia arriba ── */
   gsap.to('.about-image-wrap', {
     clipPath: 'inset(0% 0 0 0)',
@@ -759,6 +710,69 @@ function initScrollReveals() {
       scrollTrigger: { trigger: link, start: 'top 88%' }
     });
   });
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   SOBRE MÍ — fotos con fundido
+   ──────────────────────────────────────────────────────────────
+   Las fotos (.about-img) están apiladas en el mismo marco. El cambio
+   lo marca la animación de la línea del selector (CSS): al terminar,
+   pasa a la siguiente. Avanza solo mientras la sección está a la vista,
+   se pausa con el mouse encima o con el foco del teclado adentro, y con
+   "reducir movimiento" activado no avanza sola (se cambia con los numeritos).
+   ══════════════════════════════════════════════════════════════ */
+function initAboutSlides() {
+  const col = document.querySelector('.about-image-col');
+  const slides = Array.from(document.querySelectorAll('.about-img'));
+  const meta = document.querySelector('.about-meta');
+  if (!col || !meta || slides.length < 2) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const dots = document.createElement('div');
+  dots.className = 'about-dots';
+  meta.appendChild(dots);
+
+  const buttons = slides.map((_, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'about-dot';
+    button.textContent = String(index + 1).padStart(2, '0');
+    button.setAttribute('aria-label', `${index + 1} / ${slides.length}`);
+    button.insertAdjacentHTML('beforeend', '<span class="about-dot-bar" aria-hidden="true"></span>');
+    button.addEventListener('click', () => show(index));
+    dots.appendChild(button);
+    return button;
+  });
+
+  let current = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
+
+  function show(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === current);
+      slide.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+    });
+    buttons.forEach((button, i) => {
+      button.classList.toggle('is-active', i === current);
+      button.setAttribute('aria-current', i === current ? 'true' : 'false');
+    });
+  }
+
+  show(current);
+
+  col.addEventListener('animationend', (event) => {
+    if (event.target.classList.contains('about-dot-bar')) show(current + 1);
+  });
+
+  let visible = false;
+  const updatePlaying = () => col.classList.toggle('is-playing', visible && !reduceMotion.matches);
+
+  reduceMotion.addEventListener('change', updatePlaying);
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    updatePlaying();
+  }, { threshold: 0.4 }).observe(col);
 }
 
 
