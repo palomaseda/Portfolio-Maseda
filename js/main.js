@@ -86,12 +86,6 @@ const translations = {
         tag4: 'Remolacha',
         desc: 'En esta obra, exploro la similitud entre la celulosa bacteriana y la anatomía humana. Sus propiedades curativas y regenerativas de la piel. La prenda hace referencia a una segunda piel viva, nueva, frágil. Relacionándolo con la crisis medioambiental, una herida que tenemos que sanar.',
       },
-      proyecto05: {
-        title: 'Nuevo<br>proyecto',
-        tag1: 'Etiqueta',
-        tag2: 'Etiqueta',
-        desc: 'Descripción del proyecto. Este texto es de relleno hasta tener el contenido final.',
-      },
     },
     contact: {
       label: '04 — CONTACTO',
@@ -172,12 +166,6 @@ const translations = {
         tag3: 'Hibiscus',
         tag4: 'Beetroot',
         desc: 'In this piece, I explore the similarity between bacterial cellulose and human anatomy, as well as its healing and skin-regenerating properties. The garment refers to a living, new, fragile second skin, relating it to the environmental crisis: a wound that we need to heal.',
-      },
-      proyecto05: {
-        title: 'New<br>project',
-        tag1: 'Tag',
-        tag2: 'Tag',
-        desc: 'Project description. Placeholder text until the final content is ready.',
       },
     },
     contact: {
